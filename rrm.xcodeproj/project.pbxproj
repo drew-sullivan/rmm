@@ -20,6 +20,8 @@
 		7C64C5E52183651F00F2DE39 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E42183651F00F2DE39 /* Position.swift */; };
 		7C64C5E72183667D00F2DE39 /* ContactType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E62183667D00F2DE39 /* ContactType.swift */; };
 		7C64C5E9218381F300F2DE39 /* RRMUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */; };
+		7C64C5ED218391BE00F2DE39 /* RecruiterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */; };
+		7C64C5EF2183A47000F2DE39 /* RecruiterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		7C64C5E42183651F00F2DE39 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		7C64C5E62183667D00F2DE39 /* ContactType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactType.swift; sourceTree = "<group>"; };
 		7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRMUtilities.swift; sourceTree = "<group>"; };
+		7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruiterDetailViewController.swift; sourceTree = "<group>"; };
+		7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruiterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 			children = (
 				7C64C5AD218362B600F2DE39 /* AppDelegate.swift */,
 				7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */,
+				7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */,
+				7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */,
 				7C64C5E02183637300F2DE39 /* RecruiterStore.swift */,
 				7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */,
 				7C64C5E22183639E00F2DE39 /* Recruiter.swift */,
@@ -279,6 +285,8 @@
 				7C64C5E9218381F300F2DE39 /* RRMUtilities.swift in Sources */,
 				7C64C5E12183637300F2DE39 /* RecruiterStore.swift in Sources */,
 				7C64C5E52183651F00F2DE39 /* Position.swift in Sources */,
+				7C64C5EF2183A47000F2DE39 /* RecruiterCell.swift in Sources */,
+				7C64C5ED218391BE00F2DE39 /* RecruiterDetailViewController.swift in Sources */,
 				7C64C5AE218362B600F2DE39 /* AppDelegate.swift in Sources */,
 				7C64C5B6218362B600F2DE39 /* rrm.xcdatamodeld in Sources */,
 				7C64C5E32183639E00F2DE39 /* Recruiter.swift in Sources */,

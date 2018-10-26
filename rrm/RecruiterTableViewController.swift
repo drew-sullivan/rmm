@@ -18,4 +18,18 @@ class RecruiterTableViewController : UITableViewController {
         print("recruiterTableViewController")
         tableView.dataSource = recruiterStore
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "showRecruiter"?:
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let recruiter = recruiters[row]
+                let recruiterDetailViewController = segue.destination as! RecruiterDetailViewController
+                recruiterDetailViewController.recruiter = recruiter
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier")
+        }
+    }
+    
 }
