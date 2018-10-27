@@ -22,8 +22,8 @@ class Recruiter: NSObject {
     
     convenience init(random: Bool = false) {
         if random {
-            let potentialFirstNames = ["Dan", "Zach", "Nick", "Jack", "John", "Alicia"]
-            let potentialLastNames = ["Jones", "Smith", "Ashbrook", "Johnson", "Ross", "Jackson"]
+            let potentialFirstNames = ["Dan", "Autumn", "Willow", "James", "John", "Alicia"]
+            let potentialLastNames = ["Evans", "Smith", "Ashkenasi", "Johnson", "Ross", "Jackson"]
             let potentialEmployers = ["CyberCoders", "Integrity Power Search", "TechUServ", "Initrode", "Initech"]
             
             let randFirstName = potentialFirstNames[Int(arc4random_uniform(UInt32(potentialFirstNames.count)))]
@@ -35,5 +35,9 @@ class Recruiter: NSObject {
         } else {
             self.init(firstName: "", lastName: "", employer: "", position: Position(random: true))
         }
+    }
+    
+    func getFirstLetterOfLastName() -> String {
+        return String(self.lastName[lastName.startIndex])
     }
 }

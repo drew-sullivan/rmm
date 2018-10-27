@@ -50,17 +50,32 @@ class RecruiterTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recruiterStore.recruiters.count
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
-        let recruiter = recruiterStore.recruiters[indexPath.row]
+        let recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
         let utility = RRMUtilities()
         cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: (recruiter.positions.last?.dateContacted)!))"
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionTitle = recruiterStore.sortedLastNameFirstLetters[section]
+        return sectionTitle
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        let sectionTitles = recruiterStore.sortedLastNameFirstLetters
+        return sectionTitles
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        let numSections = recruiterStore.sections.count
+        return numSections
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let numRows = recruiterStore.sections[section].count
+        return numRows
+    }
 }
