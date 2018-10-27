@@ -8,12 +8,11 @@
 
 import UIKit
 
-class RecruiterDetailViewController : UIViewController {
+class RecruiterDetailViewController: UIViewController {
     
     var recruiter: Recruiter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("RecruiterDetailViewController")
     }
 }

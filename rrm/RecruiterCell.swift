@@ -8,7 +8,6 @@
 
 import UIKit
 
-class RecruiterCell : UITableViewCell {
+class RecruiterCell: UITableViewCell {
     
-    override func 
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RRMUtilities : NSObject {
+class RRMUtilities: NSObject {
     
     func parseDateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
