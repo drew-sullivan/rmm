@@ -17,10 +17,7 @@ class RecruiterTableViewController: UITableViewController {
     
     @IBAction func addNewRecruiter(_ sender: UIBarButtonItem) {
         let newRecruiter = recruiterStore.generateRecruiter()
-        if let index = recruiterStore.recruiters.index(of: newRecruiter) {
-            let indexPath = IndexPath(row: index, section: 0)
-            tableView.insertRows(at: [indexPath], with: .automatic)
-        }
+        
     }
     
     @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
@@ -30,6 +27,21 @@ class RecruiterTableViewController: UITableViewController {
         } else {
             sender.title = "Done"
             setEditing(true, animated: true)
+        }
+    }
+    
+    fileprivate func determineIndexPath(of newRecruiter: Recruiter) -> IndexPath {
+        let firstLetterOfLastName = newRecruiter.getFirstLetterOfLastName()
+        let currentLastNameFirstLetters = recruiterStore.sortedLastNameFirstLetters
+        if currentLastNameFirstLetters.contains(firstLetterOfLastName) {
+            let section = currentLastNameFirstLetters.index(of: firstLetterOfLastName)
+            if 
+        } else {
+            let firstLetterOfFirstName = newRecruiter.getFirstLetterOfFirstName()
+        }
+        if let index = recruiterStore.recruiters.index(of: newRecruiter) {
+            let indexPath = IndexPath(row: index, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
         }
     }
     

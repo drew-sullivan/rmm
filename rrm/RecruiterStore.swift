@@ -35,7 +35,13 @@ class RecruiterStore {
         sections = sortedLastNameFirstLetters.map { letter in
             return recruiters
                 .filter { $0.getFirstLetterOfLastName() == letter }
-                .sorted { $0.lastName < $1.lastName }
+                .sorted {
+                    if $0.lastName != $1.lastName {
+                        return $0.lastName < $1.lastName
+                    } else {
+                        return $0.firstName < $1.firstName
+                    }
+            }
         }
     }
 }

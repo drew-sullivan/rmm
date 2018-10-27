@@ -37,6 +37,10 @@ class Recruiter: NSObject {
         }
     }
     
+    func getFirstLetterOfFirstName() -> String {
+        return String(self.firstName[firstName.startIndex])
+    }
+    
     func getFirstLetterOfLastName() -> String {
         return String(self.lastName[lastName.startIndex])
     }
