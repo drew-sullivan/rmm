@@ -12,6 +12,27 @@ class RecruiterTableViewController: UITableViewController {
     
     var recruiterStore: RecruiterStore!
     
+    @IBOutlet var addButton: UIBarButtonItem!
+    @IBOutlet var editButton: UIBarButtonItem!
+    
+    @IBAction func addNewRecruiter(_ sender: UIBarButtonItem) {
+        let newRecruiter = recruiterStore.generateRecruiter()
+        if let index = recruiterStore.recruiters.index(of: newRecruiter) {
+            let indexPath = IndexPath(row: index, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
+        if isEditing {
+            sender.title = "Edit"
+            setEditing(false, animated: true)
+        } else {
+            sender.title = "Done"
+            setEditing(true, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

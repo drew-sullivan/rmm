@@ -51,7 +51,27 @@
                             <outlet property="delegate" destination="usL-0U-IxV" id="Xbg-cS-UZp"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Zdl-TJ-BJk"/>
+                        <barButtonItem systemItem="add" id="jB1-Id-Oa4">
+                            <connections>
+                                <action selector="addNewRecruiter:" destination="usL-0U-IxV" id="zcQ-F3-2M2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Pc4-uv-nw5"/>
+                        <barButtonItem title="Edit" id="tGP-eF-m0z">
+                            <connections>
+                                <action selector="toggleEditingMode:" destination="usL-0U-IxV" id="wft-09-Ek6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="gyW-aa-YyY"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="R42-Ob-Xud"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addButton" destination="jB1-Id-Oa4" id="jYG-yE-CoW"/>
+                        <outlet property="editButton" destination="tGP-eF-m0z" id="c2l-ri-aVU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TO2-bK-BdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -81,13 +101,17 @@
         <!--Navigation Controller-->
         <scene sceneID="sqA-E4-p1D">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RIn-nj-5A5" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="RIn-nj-5A5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ot4-Lw-5zq">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C9v-ux-v9f">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="usL-0U-IxV" kind="relationship" relationship="rootViewController" id="QD4-KE-g2h"/>
                     </connections>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Recruiter {
+class Recruiter: NSObject {
     var firstName: String
     var lastName: String
     var employer: String
@@ -22,7 +22,7 @@ class Recruiter {
     
     convenience init(random: Bool = false) {
         if random {
-            let potentialFirstNames = ["Dan", "Zach", "Nick", "Umang", "Alex", "Alicia"]
+            let potentialFirstNames = ["Dan", "Zach", "Nick", "Jack", "John", "Alicia"]
             let potentialLastNames = ["Jones", "Smith", "Ashbrook", "Johnson", "Ross", "Jackson"]
             let potentialEmployers = ["CyberCoders", "Integrity Power Search", "TechUServ", "Initrode", "Initech"]
             
