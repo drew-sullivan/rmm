@@ -24,6 +24,7 @@ class RecruiterStore {
     @discardableResult func generateRecruiter() -> Recruiter {
         let generatedRecruiter = Recruiter(random: true)
         recruiters.append(generatedRecruiter)
+        determineSections()
         return generatedRecruiter
     }
     

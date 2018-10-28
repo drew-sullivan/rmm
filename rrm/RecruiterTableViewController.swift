@@ -16,8 +16,8 @@ class RecruiterTableViewController: UITableViewController {
     @IBOutlet var editButton: UIBarButtonItem!
     
     @IBAction func addNewRecruiter(_ sender: UIBarButtonItem) {
-        let newRecruiter = recruiterStore.generateRecruiter()
-        
+        recruiterStore.generateRecruiter()
+        tableView.reloadData()
     }
     
     @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
@@ -30,23 +30,9 @@ class RecruiterTableViewController: UITableViewController {
         }
     }
     
-    fileprivate func determineIndexPath(of newRecruiter: Recruiter) -> IndexPath {
-        let firstLetterOfLastName = newRecruiter.getFirstLetterOfLastName()
-        let currentLastNameFirstLetters = recruiterStore.sortedLastNameFirstLetters
-        if currentLastNameFirstLetters.contains(firstLetterOfLastName) {
-            let section = currentLastNameFirstLetters.index(of: firstLetterOfLastName)
-            if 
-        } else {
-            let firstLetterOfFirstName = newRecruiter.getFirstLetterOfFirstName()
-        }
-        if let index = recruiterStore.recruiters.index(of: newRecruiter) {
-            let indexPath = IndexPath(row: index, section: 0)
-            tableView.insertRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
