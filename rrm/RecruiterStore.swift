@@ -15,6 +15,9 @@ class RecruiterStore {
     var sortedLastNameFirstLetters: [String] = []
     
     init() {
+        for _ in 0..<5 {
+            generateRecruiter()
+        }
         determineSections()
     }
     
