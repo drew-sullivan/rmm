@@ -48,6 +48,8 @@ class RecruiterTableViewController: UITableViewController {
                 let recruiterDetailViewController = segue.destination as! RecruiterDetailViewController
                 recruiterDetailViewController.recruiter = recruiter
             }
+        case "newRecruiterForm"?:
+            print("new recruiter form segue tapped")
         default:
             preconditionFailure("Unexpected segue identifier")
         }
