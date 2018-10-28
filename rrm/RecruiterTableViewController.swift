@@ -12,8 +12,12 @@ class RecruiterTableViewController: UITableViewController {
     
     var recruiterStore: RecruiterStore!
     
+    // MARK: - Outlets
+    
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var editButton: UIBarButtonItem!
+    
+    // MARK: - Actions
     
     @IBAction func addNewRecruiter(_ sender: UIBarButtonItem) {
         recruiterStore.generateRecruiter()
@@ -32,8 +36,9 @@ class RecruiterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.delegate = self
     }
+    
+    // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -47,6 +52,8 @@ class RecruiterTableViewController: UITableViewController {
             preconditionFailure("Unexpected segue identifier")
         }
     }
+    
+    // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
@@ -75,5 +82,29 @@ class RecruiterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numRows = recruiterStore.sections[section].count
         return numRows
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
+            
+            let title = "Delete \(recruiter.firstName) \(recruiter.lastName)?"
+            let message = "Are you sure?"
+            
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
+                action -> Void in
+                self.recruiterStore.deleteRecruiter(recruiter)
+                self.tableView.reloadData()
+            }
+            
+            alertController.addAction(deleteAction)
+            
+            present(alertController, animated: true)
+        }
     }
 }

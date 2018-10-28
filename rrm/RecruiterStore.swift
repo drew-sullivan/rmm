@@ -16,7 +16,7 @@ class RecruiterStore {
     
     init() {
         for _ in 0..<5 {
-            recruiters.append(Recruiter(random: true))
+            generateRecruiter()
         }
         determineSections()
     }
@@ -26,6 +26,13 @@ class RecruiterStore {
         recruiters.append(generatedRecruiter)
         determineSections()
         return generatedRecruiter
+    }
+    
+    func deleteRecruiter(_ recruiter: Recruiter) {
+        if let index = recruiters.index(of: recruiter) {
+            recruiters.remove(at: index)
+        }
+        determineSections()
     }
     
     fileprivate func determineSections() {
