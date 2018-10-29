@@ -34,8 +34,16 @@ class RecruiterTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+        tableView.reloadData()
     }
     
     // MARK: - Segue
@@ -49,7 +57,8 @@ class RecruiterTableViewController: UITableViewController {
                 recruiterDetailViewController.recruiter = recruiter
             }
         case "newRecruiterForm"?:
-            print("new recruiter form segue tapped")
+            let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController
+            newRecruiterFormViewController.recruiterStore = recruiterStore
         default:
             preconditionFailure("Unexpected segue identifier")
         }
@@ -62,7 +71,12 @@ class RecruiterTableViewController: UITableViewController {
         let recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
         let utility = RRMUtilities()
-        cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: (recruiter.positions.last?.dateContacted)!))"
+        if let dateLastContacted = recruiter.positions.last?.dateContacted {
+            cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: dateLastContacted))"
+        } else {
+            cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: Date()))"
+        }
+        
         return cell
     }
     
