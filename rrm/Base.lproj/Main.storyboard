@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Recruiter Table View Controller-->
+        <!--Recruiters-->
         <scene sceneID="bIA-oM-Yln">
             <objects>
                 <tableViewController id="usL-0U-IxV" customClass="RecruiterTableViewController" customModule="rrm" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,6 +56,7 @@
                         <barButtonItem systemItem="add" id="jB1-Id-Oa4">
                             <connections>
                                 <action selector="addNewRecruiter:" destination="usL-0U-IxV" id="zcQ-F3-2M2"/>
+                                <segue destination="i4H-qL-Nwe" kind="show" identifier="newRecruiterForm" id="YLG-lT-hnn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Pc4-uv-nw5"/>
@@ -66,7 +67,7 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="gyW-aa-YyY"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="R42-Ob-Xud"/>
+                    <navigationItem key="navigationItem" title="Recruiters" id="R42-Ob-Xud"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="jB1-Id-Oa4" id="jYG-yE-CoW"/>
@@ -96,15 +97,158 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7u-hV-sdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="134"/>
+            <point key="canvasLocation" x="1302" y="-11"/>
+        </scene>
+        <!--Add New Recruiter-->
+        <scene sceneID="2yo-zT-keC">
+            <objects>
+                <viewController title="Add New Recruiter" id="i4H-qL-Nwe" customClass="NewRecruiterFormViewController" customModule="rrm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="shJ-3A-L1R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ULA-kE-uhb">
+                                <rect key="frame" x="8" y="124" width="359" height="182"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B7l-Ro-N3b">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzf-cW-Zwh">
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UNZ-lP-Yzl">
+                                                <rect key="frame" x="123" y="0.0" width="236" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kYe-zx-Ldn">
+                                        <rect key="frame" x="0.0" y="38" width="359" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3U-Id-TQg">
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMu-7V-IM5">
+                                                <rect key="frame" x="123" y="0.0" width="236" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="v0a-B1-AMD">
+                                        <rect key="frame" x="0.0" y="76" width="359" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmn-05-pYV">
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LiK-mP-7ve">
+                                                <rect key="frame" x="123" y="0.0" width="236" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5aO-65-Hxr">
+                                        <rect key="frame" x="0.0" y="114" width="359" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1O-kx-gve">
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XZ4-GI-r9g">
+                                                <rect key="frame" x="123" y="0.0" width="236" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rKZ-xB-oko">
+                                        <rect key="frame" x="0.0" y="152" width="359" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJa-8m-Q4v">
+                                                <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H1O-Ig-xaq">
+                                                <rect key="frame" x="123" y="0.0" width="236" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="UNZ-lP-Yzl" firstAttribute="leading" secondItem="XZ4-GI-r9g" secondAttribute="leading" id="4HE-AF-dLB"/>
+                                    <constraint firstItem="EMu-7V-IM5" firstAttribute="leading" secondItem="XZ4-GI-r9g" secondAttribute="leading" id="77g-8Q-pc7"/>
+                                    <constraint firstItem="LiK-mP-7ve" firstAttribute="leading" secondItem="XZ4-GI-r9g" secondAttribute="leading" id="MIc-bH-rNd"/>
+                                    <constraint firstItem="H1O-Ig-xaq" firstAttribute="leading" secondItem="XZ4-GI-r9g" secondAttribute="leading" id="OVd-6a-QYn"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ULA-kE-uhb" firstAttribute="top" secondItem="LTB-ou-PPU" secondAttribute="top" constant="8" id="GAK-Md-qoP"/>
+                            <constraint firstItem="ULA-kE-uhb" firstAttribute="leading" secondItem="LTB-ou-PPU" secondAttribute="leading" constant="8" id="Gav-2I-G28"/>
+                            <constraint firstItem="LTB-ou-PPU" firstAttribute="trailing" secondItem="ULA-kE-uhb" secondAttribute="trailing" constant="8" id="HSz-xU-awl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LTB-ou-PPU"/>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="3ON-1y-TBb"/>
+                        <barButtonItem title="Cancel" id="Vrz-pB-gB6">
+                            <connections>
+                                <action selector="cancelCreatingNewRecruiter:" destination="i4H-qL-Nwe" id="F1k-aK-CHF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="lDS-C3-coJ"/>
+                        <barButtonItem title="Submit" id="wCL-nB-1o9">
+                            <connections>
+                                <action selector="submitForm:" destination="i4H-qL-Nwe" id="b3j-kH-q37"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="OBr-Wy-kXg"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="Vrz-pB-gB6" id="YCf-5F-OkW"/>
+                        <outlet property="emailAddressLabel" destination="H1O-Ig-xaq" id="OsD-6u-kv7"/>
+                        <outlet property="employerLabel" destination="LiK-mP-7ve" id="jM7-qw-EwR"/>
+                        <outlet property="firstNameLabel" destination="UNZ-lP-Yzl" id="Juv-OQ-Epo"/>
+                        <outlet property="lastNameLabel" destination="EMu-7V-IM5" id="KPC-O5-V8v"/>
+                        <outlet property="phoneNumberLabel" destination="XZ4-GI-r9g" id="cbm-m9-VBf"/>
+                        <outlet property="submitButton" destination="wCL-nB-1o9" id="G6G-sM-10p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="duk-Wi-PAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sqA-E4-p1D">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="RIn-nj-5A5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ot4-Lw-5zq">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ot4-Lw-5zq">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

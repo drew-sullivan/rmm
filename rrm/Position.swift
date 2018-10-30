@@ -11,12 +11,14 @@ import Foundation
 class Position {
     var dateContacted: Date
     var contactType: ContactType
+    var company: Company
     var title: String
     var salaryLow: Int
     var salaryHigh: Int
-    init(dateContacted: Date, contactType: ContactType, title: String, salaryLow: Int, salaryHigh: Int) {
+    init(dateContacted: Date, contactType: ContactType, company: Company, title: String, salaryLow: Int, salaryHigh: Int) {
         self.dateContacted = dateContacted
         self.contactType = contactType
+        self.company = company
         self.title = title
         self.salaryLow = salaryLow
         self.salaryHigh = salaryHigh
@@ -40,6 +42,8 @@ class Position {
             
             let randomContactType = ContactType.randomContactType()
             
+            let randomCompany = Company(random: true)
+            
             let possibleTitles = ["Android Developer", "iOS Developer", "Web Developer", "Front-End Developer"]
             let randomTitle = possibleTitles[Int(arc4random_uniform(UInt32(possibleTitles.count)))]
             
@@ -51,6 +55,7 @@ class Position {
             
             self.init(dateContacted: randomDate!,
                       contactType: randomContactType,
+                      company: randomCompany,
                       title: randomTitle,
                       salaryLow: randomSalaryLow,
                       salaryHigh: randomSalaryHigh)
@@ -58,6 +63,7 @@ class Position {
         else {
             self.init(dateContacted: Date(),
                       contactType: ContactType.email,
+                      company: Company(random: true),
                       title: "",
                       salaryLow: 0,
                       salaryHigh: 0)

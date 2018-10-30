@@ -28,6 +28,11 @@ class RecruiterStore {
         return generatedRecruiter
     }
     
+    func addRecruiter(_ recruiter: Recruiter) {
+        recruiters.append(recruiter)
+        determineSections()
+    }
+    
     func deleteRecruiter(_ recruiter: Recruiter) {
         if let index = recruiters.index(of: recruiter) {
             recruiters.remove(at: index)
