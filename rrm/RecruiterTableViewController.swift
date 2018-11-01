@@ -42,7 +42,7 @@ class RecruiterTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
+        recruiterStore.update()
         tableView.reloadData()
     }
     
@@ -51,8 +51,8 @@ class RecruiterTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showRecruiter"?:
-            if let row = tableView.indexPathForSelectedRow?.row {
-                let recruiter = recruiterStore.recruiters[row]
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
                 let recruiterDetailViewController = segue.destination as! RecruiterDetailViewController
                 recruiterDetailViewController.recruiter = recruiter
             }

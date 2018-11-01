@@ -41,6 +41,10 @@ class RecruiterStore {
         determineSections()
     }
     
+    func update() {
+        determineSections()
+    }
+    
     fileprivate func determineSections() {
         let lastNameFirstLetters = recruiters.map { $0.getFirstLetterOfLastName() }
         let uniqueLastNameFirstLetters = Set<String>(lastNameFirstLetters)
