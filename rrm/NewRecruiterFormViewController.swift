@@ -12,6 +12,8 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
     
     var recruiterStore: RecruiterStore!
     
+    //MARK: - Outlets
+    
     @IBOutlet var firstNameLabel: UITextField!
     @IBOutlet var lastNameLabel: UITextField!
     @IBOutlet var employerLabel: UITextField!
@@ -19,6 +21,8 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var emailAddressLabel: UITextField!
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var submitButton: UIBarButtonItem!
+    
+    //MARK: - Actions
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
@@ -29,7 +33,6 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func submitForm(_ sender: Any) {
-        view.endEditing(true)
         let recruiter = Recruiter(firstName: firstNameLabel.text!.capitalized,
                                   lastName: lastNameLabel.text!.capitalized,
                                   employer: employerLabel.text!.capitalized,
@@ -39,8 +42,15 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
         navigationController?.popViewController(animated: true)
     }
     
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(true)
     }
     
     // MARK: - UITextFieldDelegate
