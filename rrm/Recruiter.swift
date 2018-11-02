@@ -15,13 +15,13 @@ class Recruiter: NSObject {
     var phoneNumber: String
     var emailAddress: String
     var positions: [Position]
-    init(firstName: String, lastName: String, employer: String, phoneNumber: String, emailAddress: String) {
+    init(firstName: String, lastName: String, employer: String, phoneNumber: String, emailAddress: String, positions: [Position]) {
         self.firstName = firstName
         self.lastName = lastName
         self.employer = employer
         self.phoneNumber = phoneNumber
         self.emailAddress = emailAddress
-        self.positions = []
+        self.positions = positions
     }
     
     convenience init(random: Bool = false) {
@@ -33,12 +33,18 @@ class Recruiter: NSObject {
             let randFirstName = potentialFirstNames[Int(arc4random_uniform(UInt32(potentialFirstNames.count)))]
             let randLastName = potentialLastNames[Int(arc4random_uniform(UInt32(potentialFirstNames.count)))]
             let randEmployer = potentialEmployers[Int(arc4random_uniform(UInt32(potentialEmployers.count)))]
-            let randPhoneNumber = "\(Int(arc4random_uniform(UInt32(899))) + 100)-\(Int(arc4random_uniform(UInt32(899))) + 100)-\(Int(arc4random_uniform(UInt32(10000))))"
+            let randPhoneNumber = "(\(Int(arc4random_uniform(UInt32(899))) + 100))-\(Int(arc4random_uniform(UInt32(899))) + 100)-\(Int(arc4random_uniform(UInt32(10000))))"
             let randEmailAddress = "\(randFirstName).\(randLastName)@\(randEmployer.trimmingCharacters(in: .whitespaces)).com"
             
-            self.init(firstName: randFirstName, lastName: randLastName, employer: randEmployer, phoneNumber: randPhoneNumber, emailAddress: randEmailAddress)
+            let numRandPositions = Int(arc4random_uniform(UInt32(10)))
+            var randPositions = [Position]()
+            for _ in 0..<numRandPositions {
+                randPositions.append(Position(random: true))
+            }
+            
+            self.init(firstName: randFirstName, lastName: randLastName, employer: randEmployer, phoneNumber: randPhoneNumber, emailAddress: randEmailAddress, positions: randPositions)
         } else {
-            self.init(firstName: "", lastName: "", employer: "", phoneNumber: "", emailAddress: "")
+            self.init(firstName: "", lastName: "", employer: "", phoneNumber: "", emailAddress: "", positions: [])
         }
     }
     

@@ -9,13 +9,15 @@
 import Foundation
 
 class Position {
+    var isActive: Bool
     var dateContacted: Date
     var contactType: ContactType
     var company: Company
     var title: String
     var salaryLow: Int
     var salaryHigh: Int
-    init(dateContacted: Date, contactType: ContactType, company: Company, title: String, salaryLow: Int, salaryHigh: Int) {
+    init(isActive: Bool, dateContacted: Date, contactType: ContactType, company: Company, title: String, salaryLow: Int, salaryHigh: Int) {
+        self.isActive = isActive
         self.dateContacted = dateContacted
         self.contactType = contactType
         self.company = company
@@ -26,6 +28,8 @@ class Position {
     
     convenience init(random: Bool = false) {
         if random {
+            let randomActiveStatus = Int(arc4random_uniform(UInt32(2))) == 0 ? true : false
+            
             let numDaysBack = 180
             let day = arc4random_uniform(UInt32(numDaysBack)) + 1
             let hour = arc4random_uniform(23)
@@ -53,7 +57,8 @@ class Position {
             let randomSalaryLow = Int(arc4random_uniform(UInt32(wiggleRoom))) + lowBound
             let randomSalaryHigh = Int(arc4random_uniform(UInt32(wiggleRoom))) + highBound
             
-            self.init(dateContacted: randomDate!,
+            self.init(isActive: randomActiveStatus,
+                      dateContacted: randomDate!,
                       contactType: randomContactType,
                       company: randomCompany,
                       title: randomTitle,
@@ -61,7 +66,8 @@ class Position {
                       salaryHigh: randomSalaryHigh)
         }
         else {
-            self.init(dateContacted: Date(),
+            self.init(isActive: false,
+                      dateContacted: Date(),
                       contactType: ContactType.email,
                       company: Company(random: true),
                       title: "",

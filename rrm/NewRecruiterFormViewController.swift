@@ -37,7 +37,8 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
                                   lastName: lastNameLabel.text!.capitalized,
                                   employer: employerLabel.text!.capitalized,
                                   phoneNumber: phoneNumberLabel.text!,
-                                  emailAddress: emailAddressLabel.text!)
+                                  emailAddress: emailAddressLabel.text!,
+                                  positions: [])
         recruiterStore.addRecruiter(recruiter)
         navigationController?.popViewController(animated: true)
     }
