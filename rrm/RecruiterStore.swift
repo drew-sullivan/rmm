@@ -14,6 +14,8 @@ class RecruiterStore {
     var sections: [[Recruiter]] = []
     var sortedLastNameFirstLetters: [String] = []
     
+    var filteredRecruiters = [Recruiter]()
+    
     init() {
         for _ in 0..<5 {
             generateRecruiter()
@@ -46,12 +48,18 @@ class RecruiterStore {
     }
     
     fileprivate func determineSections() {
-        let lastNameFirstLetters = recruiters.map { $0.getFirstLetterOfLastName() }
+        let recruiterList: [Recruiter]
+        if filteredRecruiters.count > 0 {
+            recruiterList = filteredRecruiters
+        } else {
+            recruiterList = recruiters
+        }
+        let lastNameFirstLetters = recruiterList.map { $0.getFirstLetterOfLastName() }
         let uniqueLastNameFirstLetters = Set<String>(lastNameFirstLetters)
         sortedLastNameFirstLetters = uniqueLastNameFirstLetters.sorted()
         
         sections = sortedLastNameFirstLetters.map { letter in
-            return recruiters
+            return recruiterList
                 .filter { $0.getFirstLetterOfLastName() == letter }
                 .sorted {
                     if $0.lastName != $1.lastName {

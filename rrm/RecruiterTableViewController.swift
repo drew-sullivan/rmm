@@ -8,9 +8,10 @@
 
 import UIKit
 
-class RecruiterTableViewController: UITableViewController {
+class RecruiterTableViewController: UITableViewController, UISearchResultsUpdating {
     
     var recruiterStore: RecruiterStore!
+    let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Outlets
     
@@ -37,7 +38,14 @@ class RecruiterTableViewController: UITableViewController {
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        
+        // Set up the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Recruiters"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,11 +72,23 @@ class RecruiterTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Private Helpers
+    
+    func isFiltering() -> Bool {
+        let filteringStatus = searchController.isActive && !searchBarIsEmpty()
+        return filteringStatus
+    }
+    
     // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
-        let recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
+        let recruiter = recruiterStore.sections[indexPath.section][indexPath.row];
+//        if isFiltering() {
+//            recruiter = recruiterStore.sections[indexPath.section][indexPath.row];
+//        } else {
+//            recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
+//        }
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
         let utility = RRMUtilities()
         if let dateLastContacted = recruiter.positions.last?.dateContacted {
@@ -122,5 +142,24 @@ class RecruiterTableViewController: UITableViewController {
             
             present(alertController, animated: true)
         }
+    }
+    
+    // MARK: - UISearchResultsUpdating
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        recruiterStore.filteredRecruiters = recruiterStore.recruiters.filter { recruiter -> Bool in
+            return recruiter.lastName.lowercased().contains(searchText.lowercased()) ||
+                   recruiter.firstName.lowercased().contains(searchText.lowercased())
+        }
+        recruiterStore.update()
+        tableView.reloadData()
     }
 }
