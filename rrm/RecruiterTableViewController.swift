@@ -84,11 +84,6 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
         let recruiter = recruiterStore.sections[indexPath.section][indexPath.row];
-//        if isFiltering() {
-//            recruiter = recruiterStore.sections[indexPath.section][indexPath.row];
-//        } else {
-//            recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
-//        }
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
         let utility = RRMUtilities()
         if let dateLastContacted = recruiter.positions.last?.dateContacted {

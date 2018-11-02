@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecruiterDetailViewController: UIViewController {
+class RecruiterDetailViewController: UIViewController, UITextFieldDelegate {
     
     var recruiter: Recruiter!
     
@@ -17,6 +17,10 @@ class RecruiterDetailViewController: UIViewController {
     @IBOutlet var employerTextField: UITextField!
     @IBOutlet var phoneNumberTextField: UITextField!
     @IBOutlet var emailAddressTextField: UITextField!
+    
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,5 +44,12 @@ class RecruiterDetailViewController: UIViewController {
         recruiter.employer = employerTextField.text!.titlecased()
         recruiter.phoneNumber = phoneNumberTextField.text!
         recruiter.emailAddress = emailAddressTextField.text!
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

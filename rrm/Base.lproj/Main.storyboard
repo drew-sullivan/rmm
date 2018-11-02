@@ -103,6 +103,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JS5-11-hvf" id="mxv-Wa-pgE"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -120,6 +123,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JS5-11-hvf" id="uzA-0J-GJF"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -137,6 +143,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JS5-11-hvf" id="TK2-Fc-pHf"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -154,6 +163,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JS5-11-hvf" id="wwf-5Y-D9r"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -171,6 +183,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="JS5-11-hvf" id="NGS-yM-LV9"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -184,12 +199,16 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lCY-Os-klM" firstAttribute="top" secondItem="Nf9-zy-PQ4" secondAttribute="top" constant="8" id="QKX-qJ-LH7"/>
                             <constraint firstItem="lCY-Os-klM" firstAttribute="leading" secondItem="Nf9-zy-PQ4" secondAttribute="leading" constant="8" id="Sa2-pe-myI"/>
                             <constraint firstItem="Nf9-zy-PQ4" firstAttribute="trailing" secondItem="lCY-Os-klM" secondAttribute="trailing" constant="8" id="l8X-hj-onB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nf9-zy-PQ4"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3aH-VI-wcc" appends="YES" id="Wkc-Ph-10D"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailAddressTextField" destination="j0X-K1-Xf0" id="lG1-tH-EM9"/>
@@ -200,6 +219,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7u-hV-sdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3aH-VI-wcc">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="JS5-11-hvf" id="Eus-lM-BI3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1973.5999999999999" y="-90.404797601199405"/>
         </scene>
