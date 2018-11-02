@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewRecruiterFormViewController: UIViewController {
+class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
     
     var recruiterStore: RecruiterStore!
     
@@ -20,11 +20,16 @@ class NewRecruiterFormViewController: UIViewController {
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var submitButton: UIBarButtonItem!
     
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     @IBAction func cancelCreatingNewRecruiter(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func submitForm(_ sender: Any) {
+        view.endEditing(true)
         let recruiter = Recruiter(firstName: firstNameLabel.text!.capitalized,
                                   lastName: lastNameLabel.text!.capitalized,
                                   employer: employerLabel.text!.capitalized,
@@ -36,5 +41,12 @@ class NewRecruiterFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

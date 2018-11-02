@@ -252,6 +252,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="i4H-qL-Nwe" id="lc8-fH-fpG"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -269,6 +272,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="i4H-qL-Nwe" id="IDH-QQ-IT5"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -286,6 +292,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="i4H-qL-Nwe" id="nJc-st-T5J"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -303,6 +312,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="i4H-qL-Nwe" id="Dex-l8-cPh"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -320,6 +332,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="i4H-qL-Nwe" id="hTx-tp-xAn"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -333,12 +348,16 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ULA-kE-uhb" firstAttribute="top" secondItem="LTB-ou-PPU" secondAttribute="top" constant="8" id="GAK-Md-qoP"/>
                             <constraint firstItem="ULA-kE-uhb" firstAttribute="leading" secondItem="LTB-ou-PPU" secondAttribute="leading" constant="8" id="Gav-2I-G28"/>
                             <constraint firstItem="LTB-ou-PPU" firstAttribute="trailing" secondItem="ULA-kE-uhb" secondAttribute="trailing" constant="8" id="HSz-xU-awl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LTB-ou-PPU"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="95k-63-aUK" appends="YES" id="Zo2-lf-EVU"/>
+                        </connections>
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="3ON-1y-TBb"/>
@@ -367,6 +386,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duk-Wi-PAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="95k-63-aUK">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="i4H-qL-Nwe" id="1t2-oU-dFh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1354" y="330"/>
         </scene>
