@@ -74,11 +74,8 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "NewPosition"?:
-            if let indexPath = positionTableView.indexPathForSelectedRow {
-                let position = recruiter.positions[indexPath.row]
-                let newPositionViewController = segue.destination as! NewPositionViewController
-                newPositionViewController.position = position
-            }
+            let newPositionViewController = segue.destination as! NewPositionViewController
+            newPositionViewController.recruiter = recruiter
         default:
             preconditionFailure("Unexpected segue identifier")
         }

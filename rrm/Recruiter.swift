@@ -61,4 +61,8 @@ class Recruiter: NSObject {
             positions.remove(at: index)
         }
     }
+    
+    func addPosition(position: Position) {
+        positions.insert(position, at: 0)
+    }
 }

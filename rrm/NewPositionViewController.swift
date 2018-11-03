@@ -8,8 +8,58 @@
 
 import UIKit
 
-class NewPositionViewController: UIViewController {
+class NewPositionViewController: UIViewController, UITextFieldDelegate {
     
-    var position: Position!
+    var recruiter: Recruiter!
     
+    @IBOutlet var isActiveSwitch: UISwitch!
+    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var companyTextField: UITextField!
+    @IBOutlet var locationTextField: UITextField!
+    @IBOutlet var salaryTextField: UITextField!
+    
+    @IBAction func backgroundTapped(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func submitForm(_ sender: Any) {
+        let company = Company(name: companyTextField.text!,
+                              location: locationTextField.text!)
+        let position = Position(isActive: isActiveSwitch.isOn,
+                                dateContacted: Date(),
+                                company: company,
+                                title: titleTextField.text!,
+                                salary: salaryTextField.text!)
+        recruiter.addPosition(position: position)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        let utility = RRMUtilities()
+        
+        // for detail view, not new position form
+//        isActiveSwitch.isOn = position.isActive
+//        titleTextField.text = position.title
+//        companyTextField.text = position.company.name
+//        locationTextField.text = position.company.location
+//        salaryTextField.text = utility.formatStringToCurrency(position.salary)
+//        dateContactedTextField.text = utility.parseDateToString(date: position.dateContacted)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

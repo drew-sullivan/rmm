@@ -11,19 +11,15 @@ import Foundation
 class Position: NSObject {
     var isActive: Bool
     var dateContacted: Date
-    var contactType: ContactType
     var company: Company
     var title: String
-    var salaryLow: Int
-    var salaryHigh: Int
-    init(isActive: Bool, dateContacted: Date, contactType: ContactType, company: Company, title: String, salaryLow: Int, salaryHigh: Int) {
+    var salary: String
+    init(isActive: Bool, dateContacted: Date, company: Company, title: String, salary: String) {
         self.isActive = isActive
         self.dateContacted = dateContacted
-        self.contactType = contactType
         self.company = company
         self.title = title
-        self.salaryLow = salaryLow
-        self.salaryHigh = salaryHigh
+        self.salary = salary
     }
     
     convenience init(random: Bool = false) {
@@ -44,35 +40,27 @@ class Position: NSObject {
             
             let randomDate = gregorian?.date(byAdding: offsetComponents, to: today, options: .init(rawValue: 0))
             
-            let randomContactType = ContactType.randomContactType()
-            
             let randomCompany = Company(random: true)
             
             let possibleTitles = ["Android Developer", "iOS Developer", "Web Developer", "Front-End Developer"]
             let randomTitle = possibleTitles[Int(arc4random_uniform(UInt32(possibleTitles.count)))]
             
-            let lowBound = 85000
             let highBound = 105000
             let wiggleRoom = 10000
-            let randomSalaryLow = Int(arc4random_uniform(UInt32(wiggleRoom))) + lowBound
-            let randomSalaryHigh = Int(arc4random_uniform(UInt32(wiggleRoom))) + highBound
+            let randomSalary = Int(arc4random_uniform(UInt32(wiggleRoom))) + highBound
             
             self.init(isActive: randomActiveStatus,
                       dateContacted: randomDate!,
-                      contactType: randomContactType,
                       company: randomCompany,
                       title: randomTitle,
-                      salaryLow: randomSalaryLow,
-                      salaryHigh: randomSalaryHigh)
+                      salary: "\(randomSalary)")
         }
         else {
             self.init(isActive: false,
                       dateContacted: Date(),
-                      contactType: ContactType.email,
                       company: Company(random: true),
                       title: "",
-                      salaryLow: 0,
-                      salaryHigh: 0)
+                      salary: "0")
         }
     }
     
