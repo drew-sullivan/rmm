@@ -69,6 +69,21 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
         recruiter.emailAddress = emailAddressTextField.text!
     }
     
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "NewPosition"?:
+            if let indexPath = positionTableView.indexPathForSelectedRow {
+                let position = recruiter.positions[indexPath.row]
+                let newPositionViewController = segue.destination as! NewPositionViewController
+                newPositionViewController.position = position
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier")
+        }
+    }
+    
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

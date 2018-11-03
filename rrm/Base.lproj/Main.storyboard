@@ -262,6 +262,7 @@
                         <barButtonItem systemItem="add" id="pjm-3k-vUk">
                             <connections>
                                 <action selector="addNewPosition:" destination="JS5-11-hvf" id="Ssb-Lx-YvS"/>
+                                <segue destination="uca-vv-eaO" kind="show" identifier="NewPosition" id="b5p-Of-TBl"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="r6S-oR-Ior"/>
@@ -291,6 +292,21 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1973.5999999999999" y="-90.404797601199405"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HPh-Cc-6vY">
+            <objects>
+                <viewController id="uca-vv-eaO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2KE-pm-w9H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="drH-Fd-Wz7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xX-Or-6mj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2722" y="60"/>
         </scene>
         <!--Add New Recruiter-->
         <scene sceneID="2yo-zT-keC">
