@@ -55,4 +55,10 @@ class Recruiter: NSObject {
     func getFirstLetterOfLastName() -> String {
         return String(self.lastName[lastName.startIndex])
     }
+    
+    func deletePosition(position: Position) {
+        if let index = positions.index(of: position) {
+            positions.remove(at: index)
+        }
+    }
 }

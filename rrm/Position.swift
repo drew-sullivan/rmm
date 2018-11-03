@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Position {
+class Position: NSObject {
     var isActive: Bool
     var dateContacted: Date
     var contactType: ContactType
