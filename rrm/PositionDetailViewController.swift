@@ -8,24 +8,30 @@
 
 import UIKit
 
-class PositionDetailViewController: UIViewController {
+class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var position: Position!
+    var pickerOptions = [String]()
     
-    @IBOutlet var isActiveSwitch: UISwitch!
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var companyTextField: UITextField!
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var salaryTextField: UITextField!
     @IBOutlet var dateCreatedLabel: UILabel!
+    @IBOutlet var statusPickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "\(position.title), \(position.company.name)"
-        let utility = RRMUtilities()
+        statusPickerView.dataSource = self
+        statusPickerView.delegate = self
         
-        isActiveSwitch.isOn = position.isActive
+        let utility = RRMUtilities()
+        pickerOptions = utility.statusOptions
+        
+        if let row = pickerOptions.index(of: position.status) {
+            statusPickerView.selectRow(row, inComponent: 0, animated: true)
+        }
         titleTextField.text = position.title
         companyTextField.text = position.company.name
         locationTextField.text = position.company.location
@@ -36,12 +42,28 @@ class PositionDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        view.endEditing(true)
+        
         let utility = RRMUtilities()
         
-        position.isActive = isActiveSwitch.isOn
+        position.status = pickerOptions[statusPickerView.selectedRow(inComponent: 0)]
         position.title = titleTextField.text!
         position.company.name = companyTextField.text!
         position.company.location = locationTextField.text!
         position.salary = utility.formatStringToCurrency(salaryTextField.text!)
+    }
+    
+    // MARK: - UIPickerView
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerOptions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerOptions[row]
     }
 }

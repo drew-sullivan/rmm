@@ -8,15 +8,16 @@
 
 import UIKit
 
-class NewPositionViewController: UIViewController, UITextFieldDelegate {
+class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var recruiter: Recruiter!
+    var pickerOptions = [String]()
     
-    @IBOutlet var isActiveSwitch: UISwitch!
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var companyTextField: UITextField!
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var salaryTextField: UITextField!
+    @IBOutlet var statusPickerView: UIPickerView!
     
     @IBAction func backgroundTapped(_ sender: Any) {
         view.endEditing(true)
@@ -29,7 +30,7 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submitForm(_ sender: Any) {
         let company = Company(name: companyTextField.text!,
                               location: locationTextField.text!)
-        let position = Position(isActive: isActiveSwitch.isOn,
+        let position = Position(status: pickerOptions[statusPickerView.selectedRow(inComponent: 0)],
                                 dateContacted: Date(),
                                 company: company,
                                 title: titleTextField.text!,
@@ -42,6 +43,11 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let utility = RRMUtilities()
+        pickerOptions = utility.statusOptions
+        
+        statusPickerView.dataSource = self
+        statusPickerView.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,5 +58,19 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    // MARK: - UIPickerView
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerOptions.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerOptions[row]
     }
 }
