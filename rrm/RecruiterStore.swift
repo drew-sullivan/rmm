@@ -16,20 +16,18 @@ class RecruiterStore {
     
     var filteredRecruiters = [Recruiter]()
     
-    var positions: [Position] {
-        var ps = [Position]()
-        for r in recruiters {
-            for p in r.positions {
-                ps.append(p)
-            }
-        }
-        return ps.sorted { $0.status > $1.status }
-    }
+    var positions = [Position]()
     
     init() {
         for _ in 0..<5 {
             generateRecruiter()
         }
+        for r in recruiters {
+            for p in r.positions {
+                positions.append(p)
+            }
+        }
+        positions.sort { $0.status > $1.status }
         determineSections()
     }
     
@@ -51,6 +49,17 @@ class RecruiterStore {
             recruiters.remove(at: index)
         }
         determineSections()
+    }
+    
+    func deletePosition(_ position: Position) {
+        if let recruiter = position.recruiter {
+            if let index = recruiter.positions.index(of: position) {
+                recruiter.positions.remove(at: index)
+            }
+        }
+        if let index = positions.index(of: position) {
+            positions.remove(at: index)
+        }
     }
     
     func update() {

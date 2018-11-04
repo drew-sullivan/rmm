@@ -14,6 +14,7 @@ class Position: NSObject {
     var company: Company
     var title: String
     var salary: String
+    var recruiter: Recruiter?
     
     init(status: PositionStatus, dateContacted: Date, company: Company, title: String, salary: String) {
         self.status = status

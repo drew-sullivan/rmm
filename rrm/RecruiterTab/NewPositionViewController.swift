@@ -35,6 +35,7 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPicker
                                 company: company,
                                 title: titleTextField.text!,
                                 salary: salaryTextField.text!)
+        position.recruiter = recruiter
         recruiter.addPosition(position: position)
         navigationController?.popViewController(animated: true)
     }
