@@ -44,6 +44,11 @@ class RecruiterStore {
         determineSections()
     }
     
+    func addPosition(_ position: Position) {
+        positions.append(position)
+        positions.sort { $0.status > $1.status }
+    }
+    
     func deleteRecruiter(_ recruiter: Recruiter) {
         if let index = recruiters.index(of: recruiter) {
             recruiters.remove(at: index)

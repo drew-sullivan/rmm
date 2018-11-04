@@ -10,7 +10,8 @@ import UIKit
 
 class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var recruiter: Recruiter!
+    var dataStore: RecruiterStore?
+    var recruiter: Recruiter?
     var pickerOptions = [String]()
     
     @IBOutlet var titleTextField: UITextField!
@@ -35,8 +36,12 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPicker
                                 company: company,
                                 title: titleTextField.text!,
                                 salary: salaryTextField.text!)
-        position.recruiter = recruiter
-        recruiter.addPosition(position: position)
+        if let recruiter = recruiter {
+            position.recruiter = recruiter
+            recruiter.addPosition(position: position)
+        } else {
+            dataStore?.addPosition(position)
+        }
         navigationController?.popViewController(animated: true)
     }
     

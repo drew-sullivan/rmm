@@ -13,7 +13,9 @@ class PositionTableViewController: UITableViewController {
     var dataStore: RecruiterStore!
     
     @IBAction func addNewPosition(_ sender: UIBarButtonItem) {
-        
+        let newPosition = Position(random: true)
+        dataStore.addPosition(newPosition)
+        tableView.reloadData()
     }
     
     @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
