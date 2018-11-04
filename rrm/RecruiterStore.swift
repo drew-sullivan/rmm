@@ -16,15 +16,15 @@ class RecruiterStore {
     
     var filteredRecruiters = [Recruiter]()
     
-//    var positions: [Position] {
-//        var positions = [Position]()
-//        recruiters.forEach { recruiter in
-//            recruiter.positions.forEach { position in
-//                positions.append(position)
-//            }
-//        }
-//        return positions.sorted { } 
-//    }
+    var positions: [Position] {
+        var ps = [Position]()
+        for r in recruiters {
+            for p in r.positions {
+                ps.append(p)
+            }
+        }
+        return ps.sorted { $0.status > $1.status }
+    }
     
     init() {
         for _ in 0..<5 {

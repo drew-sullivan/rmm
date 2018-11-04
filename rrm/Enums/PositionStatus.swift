@@ -16,15 +16,32 @@ enum PositionStatus: String, CaseIterable {
     case waitingForResponse = "Waiting for Response"
     case offerReceived = "Offer Received"
     
+    private var sortOrder: Int {
+        switch self {
+        case .inactive:
+            return 0
+        case .resumeSubmitted:
+            return 1
+        case .phoneScreenScheduled:
+            return 2
+        case .onSiteScheduled:
+            return 3
+        case .waitingForResponse:
+            return 4
+        case .offerReceived:
+            return 5
+        }
+    }
+    
     static func ==(lhs: PositionStatus, rhs: PositionStatus) -> Bool {
-        return lhs.hashValue == rhs.hashValue
+        return lhs.sortOrder == rhs.sortOrder
     }
     
     static func <(lhs: PositionStatus, rhs: PositionStatus) -> Bool {
-        return lhs.hashValue < rhs.hashValue
+        return lhs.sortOrder < rhs.sortOrder
     }
     
     static func >(lhs: PositionStatus, rhs: PositionStatus) -> Bool {
-        return lhs.hashValue > rhs.hashValue
+        return lhs.sortOrder > rhs.sortOrder
     }
 }

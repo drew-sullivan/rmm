@@ -36,7 +36,7 @@ class Recruiter: NSObject {
             let randPhoneNumber = "(\(Int(arc4random_uniform(UInt32(899))) + 100))-\(Int(arc4random_uniform(UInt32(899))) + 100)-\(Int(arc4random_uniform(UInt32(10000))))"
             let randEmailAddress = "\(randFirstName).\(randLastName)@\(randEmployer.trimmingCharacters(in: .whitespaces)).com"
             
-            let numRandPositions = Int(arc4random_uniform(UInt32(10)))
+            let numRandPositions = Int(arc4random_uniform(UInt32(3)))
             var randPositions = [Position]()
             for _ in 0..<numRandPositions {
                 randPositions.append(Position(random: true))
