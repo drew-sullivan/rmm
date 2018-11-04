@@ -9,12 +9,13 @@
 import Foundation
 
 class Position: NSObject {
-    var status: String
+    var status: PositionStatus
     var dateContacted: Date
     var company: Company
     var title: String
     var salary: String
-    init(status: String, dateContacted: Date, company: Company, title: String, salary: String) {
+    
+    init(status: PositionStatus, dateContacted: Date, company: Company, title: String, salary: String) {
         self.status = status
         self.dateContacted = dateContacted
         self.company = company
@@ -24,8 +25,7 @@ class Position: NSObject {
     
     convenience init(random: Bool = false) {
         if random {
-            let utility = RRMUtilities()
-            let randomStatus = utility.statusOptions[Int(arc4random_uniform(UInt32(utility.statusOptions.count)))]
+            let randomStatus = PositionStatus.allCases[Int(arc4random_uniform(UInt32(PositionStatus.allCases.count)))]
             
             let numDaysBack = 180
             let day = arc4random_uniform(UInt32(numDaysBack)) + 1
@@ -57,7 +57,7 @@ class Position: NSObject {
                       salary: "\(randomSalary)")
         }
         else {
-            self.init(status: "",
+            self.init(status: .inactive,
                       dateContacted: Date(),
                       company: Company(random: true),
                       title: "",

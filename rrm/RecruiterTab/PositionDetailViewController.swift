@@ -27,9 +27,11 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         statusPickerView.delegate = self
         
         let utility = RRMUtilities()
-        pickerOptions = utility.statusOptions
+        for status in PositionStatus.allCases {
+            pickerOptions.append(status.rawValue)
+        }
         
-        if let row = pickerOptions.index(of: position.status) {
+        if let row = pickerOptions.index(of: position!.status.rawValue) {
             statusPickerView.selectRow(row, inComponent: 0, animated: true)
         }
         titleTextField.text = position.title
@@ -46,7 +48,7 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         
         let utility = RRMUtilities()
         
-        position.status = pickerOptions[statusPickerView.selectedRow(inComponent: 0)]
+        position.status = PositionStatus(rawValue: pickerOptions[statusPickerView.selectedRow(inComponent: 0)])!
         position.title = titleTextField.text!
         position.company.name = companyTextField.text!
         position.company.location = locationTextField.text!
