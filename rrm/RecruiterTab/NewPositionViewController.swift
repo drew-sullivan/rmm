@@ -30,7 +30,7 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPicker
     @IBAction func submitForm(_ sender: Any) {
         let company = Company(name: companyTextField.text!,
                               location: locationTextField.text!)
-        let position = Position(status: pickerOptions[statusPickerView.selectedRow(inComponent: 0)],
+        let position = Position(status: PositionStatus(rawValue: pickerOptions[statusPickerView.selectedRow(inComponent: 0)])!,
                                 dateContacted: Date(),
                                 company: company,
                                 title: titleTextField.text!,
@@ -43,8 +43,10 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let utility = RRMUtilities()
-        pickerOptions = utility.statusOptions
+        
+        for status in PositionStatus.allCases {
+            pickerOptions.append(status.rawValue)
+        }
         
         statusPickerView.dataSource = self
         statusPickerView.delegate = self

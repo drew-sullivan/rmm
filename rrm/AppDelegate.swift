@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let recruiterStore = RecruiterStore()
         let navigationController = window!.rootViewController as! UINavigationController
-//        let recruiterController = navigationController.topViewController as! RecruiterTableViewController
-//        recruiterController.recruiterStore = recruiterStore
-        let positionTableViewController = navigationController.topViewController as! PositionTableViewController
-        positionTableViewController.dataStore = recruiterStore
+        let recruiterController = navigationController.topViewController as! RecruiterTableViewController
+        recruiterController.recruiterStore = recruiterStore
+//        let positionTableViewController = navigationController.topViewController as! PositionTableViewController
+//        positionTableViewController.dataStore = recruiterStore
         return true
     }
 
@@ -95,4 +95,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
