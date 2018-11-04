@@ -57,6 +57,12 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
         positionTableView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        positionTableView.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -76,6 +82,12 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
         case "NewPosition"?:
             let newPositionViewController = segue.destination as! NewPositionViewController
             newPositionViewController.recruiter = recruiter
+        case "PositionDetail"?:
+            let positionDetailViewController = segue.destination as! PositionDetailViewController
+            if let indexPath = positionTableView.indexPathForSelectedRow {
+                let position = recruiter.positions[indexPath.row]
+                positionDetailViewController.position = position
+            }
         default:
             preconditionFailure("Unexpected segue identifier")
         }

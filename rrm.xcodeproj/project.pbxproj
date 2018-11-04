@@ -12,6 +12,7 @@
 		3A5453A921861D270033613F /* NewRecruiterFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */; };
 		3A5453AB218621CB0033613F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5453AA218621CB0033613F /* Company.swift */; };
 		3A94401E218DDBEB00C62EBB /* NewPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */; };
+		3A944020218E6F2F00C62EBB /* PositionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */; };
 		7C64C5AE218362B600F2DE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5AD218362B600F2DE39 /* AppDelegate.swift */; };
 		7C64C5B3218362B600F2DE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C64C5B1218362B600F2DE39 /* Main.storyboard */; };
 		7C64C5B6218362B600F2DE39 /* rrm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5B4218362B600F2DE39 /* rrm.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 		3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecruiterFormViewController.swift; sourceTree = "<group>"; };
 		3A5453AA218621CB0033613F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPositionViewController.swift; sourceTree = "<group>"; };
+		3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionDetailViewController.swift; sourceTree = "<group>"; };
 		7C64C5AA218362B600F2DE39 /* rrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C64C5AD218362B600F2DE39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C64C5B2218362B600F2DE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				7C64C5E42183651F00F2DE39 /* Position.swift */,
 				3A5453AA218621CB0033613F /* Company.swift */,
 				7C64C5B1218362B600F2DE39 /* Main.storyboard */,
+				3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */,
 				3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */,
 				7C64C5B7218362B800F2DE39 /* Assets.xcassets */,
 				7C64C5B9218362B800F2DE39 /* LaunchScreen.storyboard */,
@@ -313,6 +316,7 @@
 				7C64C5E12183637300F2DE39 /* RecruiterStore.swift in Sources */,
 				7C64C5E52183651F00F2DE39 /* Position.swift in Sources */,
 				3A94401E218DDBEB00C62EBB /* NewPositionViewController.swift in Sources */,
+				3A944020218E6F2F00C62EBB /* PositionDetailViewController.swift in Sources */,
 				7C64C5EF2183A47000F2DE39 /* RecruiterCell.swift in Sources */,
 				3A04CBB8218A907000548CD6 /* NameRelationshipStatus.swift in Sources */,
 				7C64C5ED218391BE00F2DE39 /* RecruiterDetailViewController.swift in Sources */,

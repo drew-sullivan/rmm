@@ -42,15 +42,6 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let utility = RRMUtilities()
-        
-        // for detail view, not new position form
-//        isActiveSwitch.isOn = position.isActive
-//        titleTextField.text = position.title
-//        companyTextField.text = position.company.name
-//        locationTextField.text = position.company.location
-//        salaryTextField.text = utility.formatStringToCurrency(position.salary)
-//        dateContactedTextField.text = utility.parseDateToString(date: position.dateContacted)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
