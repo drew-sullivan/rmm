@@ -82,7 +82,7 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
         case "NewPosition"?:
             let newPositionViewController = segue.destination as! NewPositionViewController
             newPositionViewController.recruiter = recruiter
-        case "PositionDetail"?:
+        case "RecruiterPositionDetail"?:
             let positionDetailViewController = segue.destination as! PositionDetailViewController
             if let indexPath = positionTableView.indexPathForSelectedRow {
                 let position = recruiter.positions[indexPath.row]

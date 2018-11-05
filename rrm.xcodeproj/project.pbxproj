@@ -124,12 +124,12 @@
 		3A944021218F3DC900C62EBB /* RecruiterTab */ = {
 			isa = PBXGroup;
 			children = (
-				3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */,
 				3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */,
-				7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */,
+				3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */,
+				3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */,
 				7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */,
 				7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */,
-				3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */,
+				7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */,
 			);
 			path = RecruiterTab;
 			sourceTree = "<group>";

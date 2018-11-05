@@ -20,11 +20,6 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     // MARK: - Actions
     
-    @IBAction func addNewRecruiter(_ sender: UIBarButtonItem) {
-        recruiterStore.generateRecruiter()
-        tableView.reloadData()
-    }
-    
     @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
         if isEditing {
             sender.title = "Edit"

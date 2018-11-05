@@ -18,13 +18,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QAu-NA-iNy">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PositionPositionCell" textLabel="C4q-Cw-4TJ" detailTextLabel="J8f-gp-ZqQ" style="IBUITableViewCellStyleSubtitle" id="QAu-NA-iNy">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QAu-NA-iNy" id="YI4-u3-ujt">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C4q-Cw-4TJ">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="J8f-gp-ZqQ">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="o6f-zE-LYd" kind="show" identifier="PositionPositionDetails" id="WjW-5d-Mux"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -37,7 +56,7 @@
                         <barButtonItem systemItem="add" id="tWZ-T5-qim">
                             <connections>
                                 <action selector="addNewPosition:" destination="Dlw-AR-NIE" id="gUu-Fn-iDs"/>
-                                <segue destination="uca-vv-eaO" kind="show" id="6pk-9M-EF9"/>
+                                <segue destination="uca-vv-eaO" kind="show" identifier="PositionNewPosition" id="Ya5-8D-CUN"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="QRb-dX-vJo"/>
@@ -271,7 +290,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="o6f-zE-LYd" kind="show" identifier="PositionDetail" id="BgO-N5-Mc7"/>
+                                            <segue destination="o6f-zE-LYd" kind="show" identifier="RecruiterPositionDetail" id="nAp-Aj-uix"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -647,7 +666,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1358" y="868"/>
+            <point key="canvasLocation" x="1358" y="869"/>
         </scene>
         <!--New Recruiter-->
         <scene sceneID="2yo-zT-keC">
@@ -862,6 +881,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6pk-9M-EF9"/>
+        <segue reference="Ya5-8D-CUN"/>
+        <segue reference="WjW-5d-Mux"/>
     </inferredMetricsTieBreakers>
 </document>

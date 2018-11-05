@@ -12,12 +12,6 @@ class PositionTableViewController: UITableViewController {
     
     var dataStore: RecruiterStore!
     
-    @IBAction func addNewPosition(_ sender: UIBarButtonItem) {
-        let newPosition = Position(random: true)
-        dataStore.addPosition(newPosition)
-        tableView.reloadData()
-    }
-    
     @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
         if isEditing {
             sender.title = "Edit"
@@ -32,10 +26,16 @@ class PositionTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
     // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "PositionCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PositionPositionCell", for: indexPath)
         
         let position = dataStore.positions[indexPath.row]
         
@@ -70,6 +70,23 @@ class PositionTableViewController: UITableViewController {
             alertController.addAction(deleteAction)
             
             present(alertController, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "PositionNewPosition"?:
+            let newPositionForm = segue.destination as! NewPositionViewController
+            newPositionForm.dataStore = dataStore
+        case "PositionPositionDetails"?:
+            let positionDetailViewController = segue.destination as! PositionDetailViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let position = dataStore.positions[indexPath.row]
+                positionDetailViewController.position = position
+            }
+            
+        default:
+            preconditionFailure("Unexpected segue identifier")
         }
     }
 }

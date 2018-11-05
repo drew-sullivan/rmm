@@ -10,8 +10,6 @@ import UIKit
 
 class RRMUtilities: NSObject {
     
-    let statusOptions = ["Inactive", "Resume Submitted", "Phone Screen Scheduled", "On-Site Scheduled", "Waiting for Response", "Offer Received"]
-    
     func parseDateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
