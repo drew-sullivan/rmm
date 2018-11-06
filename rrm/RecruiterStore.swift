@@ -67,6 +67,10 @@ class RecruiterStore {
         }
     }
     
+    func updatePositions() {
+        positions.sort { $0.status > $1.status }
+    }
+    
     func update() {
         determineSections()
     }

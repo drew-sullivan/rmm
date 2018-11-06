@@ -28,5 +28,4 @@ class RRMUtilities: NSObject {
         formatter.numberStyle = .currencyAccounting
         return formatter.string(from: NSNumber(value: doubleValue)) ?? "$\(doubleValue)"
     }
-    
 }

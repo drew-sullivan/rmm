@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum PositionStatus: String, CaseIterable {
     case inactive = "Inactive"
@@ -30,6 +31,23 @@ enum PositionStatus: String, CaseIterable {
             return 4
         case .offerReceived:
             return 5
+        }
+    }
+    
+    func backgroundColor() -> UIColor {
+        switch self {
+        case .inactive:
+            return UIColor(rgb: 0xffffd9)
+        case .resumeSubmitted:
+            return UIColor(rgb: 0xedf8b1)
+        case .phoneScreenScheduled:
+            return UIColor(rgb: 0xc7e9b4)
+        case .onSiteScheduled:
+            return UIColor(rgb: 0x7fcdbb)
+        case .waitingForResponse:
+            return UIColor(rgb: 0x41b6c4)
+        case .offerReceived:
+            return UIColor(rgb: 0x1d91c0)
         }
     }
     

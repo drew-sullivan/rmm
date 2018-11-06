@@ -29,6 +29,7 @@ class PositionTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        dataStore.updatePositions()
         tableView.reloadData()
     }
     
@@ -41,6 +42,7 @@ class PositionTableViewController: UITableViewController {
         
         cell.textLabel?.text = "\(position.title) @ \(position.company.name)"
         cell.detailTextLabel?.text = "Status: \(position.status.rawValue)"
+        cell.backgroundColor = position.status.backgroundColor()
         
         return cell
     }

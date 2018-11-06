@@ -11,6 +11,7 @@
 		3A23BCA32186A2C4002734ED /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23BCA22186A2C4002734ED /* String.swift */; };
 		3A5453A921861D270033613F /* NewRecruiterFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */; };
 		3A5453AB218621CB0033613F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5453AA218621CB0033613F /* Company.swift */; };
+		3A62DE1E219122B100F79A1E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A62DE1D219122B100F79A1E /* UIColor.swift */; };
 		3A94401E218DDBEB00C62EBB /* NewPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */; };
 		3A944020218E6F2F00C62EBB /* PositionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */; };
 		3A944024218F400000C62EBB /* PositionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A944023218F400000C62EBB /* PositionTableViewController.swift */; };
@@ -53,6 +54,7 @@
 		3A23BCA22186A2C4002734ED /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecruiterFormViewController.swift; sourceTree = "<group>"; };
 		3A5453AA218621CB0033613F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		3A62DE1D219122B100F79A1E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPositionViewController.swift; sourceTree = "<group>"; };
 		3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionDetailViewController.swift; sourceTree = "<group>"; };
 		3A944023218F400000C62EBB /* PositionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				3A23BCA22186A2C4002734ED /* String.swift */,
+				3A62DE1D219122B100F79A1E /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				7C64C5AE218362B600F2DE39 /* AppDelegate.swift in Sources */,
 				3A944027218F4D9F00C62EBB /* PositionStatus.swift in Sources */,
 				7C64C5B6218362B600F2DE39 /* rrm.xcdatamodeld in Sources */,
+				3A62DE1E219122B100F79A1E /* UIColor.swift in Sources */,
 				3A5453A921861D270033613F /* NewRecruiterFormViewController.swift in Sources */,
 				3A23BCA32186A2C4002734ED /* String.swift in Sources */,
 				7C64C5E32183639E00F2DE39 /* Recruiter.swift in Sources */,
