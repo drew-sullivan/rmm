@@ -34,6 +34,7 @@ enum PositionStatus: String, CaseIterable {
         }
     }
     
+    // from http://colorbrewer2.org/?type=sequential&scheme=BuGn&n=9#type=sequential&scheme=YlGnBu&n=9
     func backgroundColor() -> UIColor {
         switch self {
         case .inactive:
