@@ -263,7 +263,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JGK-KI-HFB">
-                                <rect key="frame" x="0.0" y="307" width="375" height="267"/>
+                                <rect key="frame" x="0.0" y="354" width="375" height="220"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PositionCell" textLabel="VVZ-VM-Lgx" detailTextLabel="HCC-UA-4dV" style="IBUITableViewCellStyleSubtitle" id="t0E-62-LjO">
@@ -296,7 +296,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Positions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSC-kA-GxU">
-                                <rect key="frame" x="153" y="274.5" width="69.5" height="20.5"/>
+                                <rect key="frame" x="153" y="321.5" width="69.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="POF-BK-KbF"/>
                                 </constraints>
@@ -309,7 +309,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lCY-Os-klM" firstAttribute="leading" secondItem="Nf9-zy-PQ4" secondAttribute="leading" constant="8" id="DMC-mB-pAh"/>
-                            <constraint firstItem="JGK-KI-HFB" firstAttribute="height" secondItem="Idc-u4-PRd" secondAttribute="height" multiplier="0.4" id="G4P-tI-eZs"/>
+                            <constraint firstItem="JGK-KI-HFB" firstAttribute="height" secondItem="Idc-u4-PRd" secondAttribute="height" multiplier="0.33" id="G4P-tI-eZs"/>
                             <constraint firstItem="JGK-KI-HFB" firstAttribute="bottom" secondItem="Nf9-zy-PQ4" secondAttribute="bottom" id="GBf-Kg-x7O"/>
                             <constraint firstItem="DSC-kA-GxU" firstAttribute="centerX" secondItem="Idc-u4-PRd" secondAttribute="centerX" id="GeZ-z5-Pzh"/>
                             <constraint firstItem="JGK-KI-HFB" firstAttribute="top" secondItem="DSC-kA-GxU" secondAttribute="bottom" constant="12" id="JSh-V8-A4U"/>
@@ -887,6 +887,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uJz-1s-yUd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="82N-Vx-M8W">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -905,7 +906,7 @@
         <image name="Recruiter-Icon-BW" width="23" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ya5-8D-CUN"/>
-        <segue reference="WjW-5d-Mux"/>
+        <segue reference="b5p-Of-TBl"/>
+        <segue reference="nAp-Aj-uix"/>
     </inferredMetricsTieBreakers>
 </document>

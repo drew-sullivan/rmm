@@ -113,6 +113,8 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
         
         cell.textLabel?.text = position.company.name
         cell.detailTextLabel?.text = "\(position.title)"
+        cell.backgroundColor = position.status.backgroundColor()
+        
         return cell
     }
     
