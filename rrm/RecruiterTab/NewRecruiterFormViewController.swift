@@ -11,6 +11,7 @@ import UIKit
 class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
     
     var recruiterStore: RecruiterStore!
+    var position: Position?
     
     //MARK: - Outlets
     
@@ -39,6 +40,10 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
                                   phoneNumber: phoneNumberLabel.text!,
                                   emailAddress: emailAddressLabel.text!,
                                   positions: [])
+        if let position = position {
+            recruiter.positions.append(position)
+            position.recruiter = recruiter
+        }
         recruiterStore.addRecruiter(recruiter)
         navigationController?.popViewController(animated: true)
     }

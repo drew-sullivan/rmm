@@ -115,6 +115,15 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		3A0791A321925B540018E871 /* Shared View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */,
+				3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */,
+			);
+			path = "Shared View Controllers";
+			sourceTree = "<group>";
+		};
 		3A23BCA42186A309002734ED /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +136,7 @@
 		3A944021218F3DC900C62EBB /* RecruiterTab */ = {
 			isa = PBXGroup;
 			children = (
-				3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */,
 				3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */,
-				3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */,
 				7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */,
 				7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */,
 				7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */,
@@ -178,9 +185,10 @@
 		7C64C5AC218362B600F2DE39 /* rrm */ = {
 			isa = PBXGroup;
 			children = (
+				3A0791A321925B540018E871 /* Shared View Controllers */,
 				3A944025218F40BA00C62EBB /* PositionTab */,
-				3A944022218F3E0F00C62EBB /* Models */,
 				3A944021218F3DC900C62EBB /* RecruiterTab */,
+				3A944022218F3E0F00C62EBB /* Models */,
 				3A04CBB9218A907A00548CD6 /* Enums */,
 				3A23BCA42186A309002734ED /* Extensions */,
 				7C64C5AD218362B600F2DE39 /* AppDelegate.swift */,

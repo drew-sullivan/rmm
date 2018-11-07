@@ -10,6 +10,7 @@ import UIKit
 
 class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var dataStore: RecruiterStore?
     var position: Position!
     var pickerOptions = [String]()
     
@@ -19,13 +20,17 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     @IBOutlet var salaryTextField: UITextField!
     @IBOutlet var dateCreatedLabel: UILabel!
     @IBOutlet var statusPickerView: UIPickerView!
+    @IBOutlet var recruiterLabel: UILabel!
+    @IBOutlet var newRecruiterButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         statusPickerView.dataSource = self
         statusPickerView.delegate = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let utility = RRMUtilities()
         for status in PositionStatus.allCases {
             pickerOptions.append(status.rawValue)
@@ -39,6 +44,13 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         locationTextField.text = position.company.location
         salaryTextField.text = utility.formatStringToCurrency(position.salary)
         dateCreatedLabel.text = utility.parseDateToString(date: position.dateContacted)
+        
+        if let recruiter = position.recruiter {
+            recruiterLabel.text = "\(recruiter.firstName) \(recruiter.lastName)"
+            newRecruiterButton.isEnabled = false
+        } else {
+            recruiterLabel.text = ""
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,5 +79,18 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerOptions[row]
+    }
+    
+    // MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "PositionNewRecruiter"?:
+            let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController
+            newRecruiterFormViewController.position = position
+            newRecruiterFormViewController.recruiterStore = dataStore
+        default:
+            preconditionFailure("Unexpected segue identifier")
+        }
     }
 }

@@ -84,6 +84,7 @@ class PositionTableViewController: UITableViewController {
             let positionDetailViewController = segue.destination as! PositionDetailViewController
             if let indexPath = tableView.indexPathForSelectedRow {
                 let position = dataStore.positions[indexPath.row]
+                positionDetailViewController.dataStore = dataStore
                 positionDetailViewController.position = position
             }
             
