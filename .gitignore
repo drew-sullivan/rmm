@@ -39,6 +39,7 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+ClearbitAPI.swift
 
 # CocoaPods
 #
