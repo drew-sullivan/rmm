@@ -10,15 +10,15 @@ import Foundation
 
 class Position: NSObject {
     var status: PositionStatus
-    var dateContacted: Date
+    var dateApplied: Date
     var company: Company
     var title: String
     var salary: String
     var recruiter: Recruiter?
     
-    init(status: PositionStatus, dateContacted: Date, company: Company, title: String, salary: String) {
+    init(status: PositionStatus, dateApplied: Date, company: Company, title: String, salary: String) {
         self.status = status
-        self.dateContacted = dateContacted
+        self.dateApplied = dateApplied
         self.company = company
         self.title = title
         self.salary = salary
@@ -52,14 +52,14 @@ class Position: NSObject {
             let randomSalary = Int(arc4random_uniform(UInt32(wiggleRoom))) + highBound
             
             self.init(status: randomStatus,
-                      dateContacted: randomDate!,
+                      dateApplied: randomDate!,
                       company: randomCompany,
                       title: randomTitle,
                       salary: "\(randomSalary)")
         }
         else {
             self.init(status: .inactive,
-                      dateContacted: Date(),
+                      dateApplied: Date(),
                       company: Company(random: true),
                       title: "",
                       salary: "0")

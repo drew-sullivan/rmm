@@ -81,7 +81,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
         let recruiter = dataStore.sections[indexPath.section][indexPath.row];
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
         let utility = RRMUtilities()
-        if let dateLastContacted = recruiter.positions.last?.dateContacted {
+        if let dateLastContacted = recruiter.positions.last?.dateApplied {
             cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: dateLastContacted))"
         } else {
             cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: Date()))"

@@ -129,6 +129,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Positions" id="IRU-GK-jmK"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="editButton" destination="2p3-FY-cG5" id="hjK-jI-G7m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5a8-Qt-5Ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

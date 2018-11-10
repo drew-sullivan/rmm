@@ -43,7 +43,7 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         companyTextField.text = position.company.name
         locationTextField.text = position.company.location
         salaryTextField.text = utility.formatStringToCurrency(position.salary)
-        dateCreatedLabel.text = utility.parseDateToString(date: position.dateContacted)
+        dateCreatedLabel.text = utility.parseDateToString(date: position.dateApplied)
         
         if let recruiter = position.recruiter {
             recruiterLabel.text = "\(recruiter.firstName) \(recruiter.lastName)"

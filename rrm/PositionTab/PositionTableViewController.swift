@@ -12,6 +12,8 @@ class PositionTableViewController: UITableViewController {
     
     var dataStore: DataStore!
     
+    @IBOutlet var editButton: UIBarButtonItem!
+    
     @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
         if isEditing {
             sender.title = "Edit"
@@ -26,6 +28,9 @@ class PositionTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 150
+        if dataStore.positions.count < 1 {
+            editButton.isEnabled = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +52,7 @@ class PositionTableViewController: UITableViewController {
         cell.companyNameLabel.text = "\(position.company.name)"
         cell.locationLabel.text = "\(position.company.location)"
         let utility = RRMUtilities()
-        cell.appliedLabel.text = "\(utility.parseDateToString(date: position.dateContacted))"
+        cell.appliedLabel.text = "\(utility.parseDateToString(date: position.dateApplied))"
         cell.recruiterLabel.text = "Recruiter: \(position.recruiter?.printableName ?? "None")"
         
         dataStore.fetchLogo(by: position.company.name) { (image) in

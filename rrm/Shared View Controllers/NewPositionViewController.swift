@@ -32,7 +32,7 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPicker
         let company = Company(name: companyTextField.text!,
                               location: locationTextField.text!)
         let position = Position(status: PositionStatus(rawValue: pickerOptions[statusPickerView.selectedRow(inComponent: 0)])!,
-                                dateContacted: Date(),
+                                dateApplied: Date(),
                                 company: company,
                                 title: titleTextField.text!,
                                 salary: salaryTextField.text!)
