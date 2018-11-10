@@ -10,7 +10,7 @@ import UIKit
 
 class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
     
-    var recruiterStore: RecruiterStore!
+    var dataStore: DataStore!
     var position: Position?
     
     //MARK: - Outlets
@@ -44,7 +44,7 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
             recruiter.positions.append(position)
             position.recruiter = recruiter
         }
-        recruiterStore.addRecruiter(recruiter)
+        dataStore.addRecruiter(recruiter)
         navigationController?.popViewController(animated: true)
     }
     

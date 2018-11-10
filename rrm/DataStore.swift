@@ -1,5 +1,5 @@
 //
-//  RecruiterStore.swift
+//  dataStore.swift
 //  rrm
 //
 //  Created by Drew Sullivan on 10/26/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecruiterStore {
+class DataStore {
     
     var recruiters = [Recruiter]()
     var sections: [[Recruiter]] = []
@@ -19,10 +19,7 @@ class RecruiterStore {
     var positions = [Position]()
     
     init() {
-        ClearbitAPI.getCompanyLogoURL(from: "apple") { (Data) in
-            print(Data)
-        }
-        for _ in 0..<5 {
+        for _ in 0..<25 {
             generateRecruiter()
         }
         for r in recruiters {

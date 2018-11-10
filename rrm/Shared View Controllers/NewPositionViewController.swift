@@ -10,7 +10,7 @@ import UIKit
 
 class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var dataStore: RecruiterStore?
+    var dataStore: DataStore?
     var recruiter: Recruiter?
     var pickerOptions = [String]()
     

@@ -26,7 +26,7 @@
 		7C64C5C6218362B800F2DE39 /* rrmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5C5218362B800F2DE39 /* rrmTests.swift */; };
 		7C64C5D1218362B900F2DE39 /* rrmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5D0218362B900F2DE39 /* rrmUITests.swift */; };
 		7C64C5DF2183630F00F2DE39 /* RecruiterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */; };
-		7C64C5E12183637300F2DE39 /* RecruiterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E02183637300F2DE39 /* RecruiterStore.swift */; };
+		7C64C5E12183637300F2DE39 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E02183637300F2DE39 /* DataStore.swift */; };
 		7C64C5E32183639E00F2DE39 /* Recruiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E22183639E00F2DE39 /* Recruiter.swift */; };
 		7C64C5E52183651F00F2DE39 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E42183651F00F2DE39 /* Position.swift */; };
 		7C64C5E9218381F300F2DE39 /* RRMUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */; };
@@ -77,7 +77,7 @@
 		7C64C5D0218362B900F2DE39 /* rrmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rrmUITests.swift; sourceTree = "<group>"; };
 		7C64C5D2218362B900F2DE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruiterTableViewController.swift; sourceTree = "<group>"; };
-		7C64C5E02183637300F2DE39 /* RecruiterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecruiterStore.swift; sourceTree = "<group>"; };
+		7C64C5E02183637300F2DE39 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		7C64C5E22183639E00F2DE39 /* Recruiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recruiter.swift; sourceTree = "<group>"; };
 		7C64C5E42183651F00F2DE39 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRMUtilities.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 				3A23BCA42186A309002734ED /* Extensions */,
 				7C64C5AD218362B600F2DE39 /* AppDelegate.swift */,
 				3AB31FAD219739A30038307C /* ClearbitAPI.swift */,
-				7C64C5E02183637300F2DE39 /* RecruiterStore.swift */,
+				7C64C5E02183637300F2DE39 /* DataStore.swift */,
 				7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */,
 				7C64C5B1218362B600F2DE39 /* Main.storyboard */,
 				7C64C5B7218362B800F2DE39 /* Assets.xcassets */,
@@ -360,7 +360,7 @@
 			files = (
 				7C64C5DF2183630F00F2DE39 /* RecruiterTableViewController.swift in Sources */,
 				7C64C5E9218381F300F2DE39 /* RRMUtilities.swift in Sources */,
-				7C64C5E12183637300F2DE39 /* RecruiterStore.swift in Sources */,
+				7C64C5E12183637300F2DE39 /* DataStore.swift in Sources */,
 				7C64C5E52183651F00F2DE39 /* Position.swift in Sources */,
 				3A94401E218DDBEB00C62EBB /* NewPositionViewController.swift in Sources */,
 				3A944020218E6F2F00C62EBB /* PositionDetailViewController.swift in Sources */,

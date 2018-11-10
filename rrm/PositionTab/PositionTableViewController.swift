@@ -10,7 +10,7 @@ import UIKit
 
 class PositionTableViewController: UITableViewController {
     
-    var dataStore: RecruiterStore!
+    var dataStore: DataStore!
     
     @IBAction func toggleEditingMode(_ sender: UIBarButtonItem) {
         if isEditing {
@@ -24,6 +24,8 @@ class PositionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = 150
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,10 +50,8 @@ class PositionTableViewController: UITableViewController {
         cell.appliedLabel.text = "\(utility.parseDateToString(date: position.dateContacted))"
         cell.recruiterLabel.text = "Recruiter: \(position.recruiter?.printableName ?? "None")"
         
-        if dataStore.positions.count > 0 {
-            ClearbitAPI.getCompanyLogoURL(from: position.company.name) { (image) in
-                cell.update(with: image)
-            }
+        ClearbitAPI.getCompanyLogoURL(from: position.company.name) { (image) in
+            cell.update(with: image)
         }
     
         return cell

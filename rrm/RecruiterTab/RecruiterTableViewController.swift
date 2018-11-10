@@ -10,7 +10,7 @@ import UIKit
 
 class RecruiterTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    var recruiterStore: RecruiterStore!
+    var dataStore: DataStore!
     let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Outlets
@@ -45,7 +45,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        recruiterStore.update()
+        dataStore.update()
         tableView.reloadData()
     }
     
@@ -55,13 +55,13 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
         switch segue.identifier {
         case "showRecruiter"?:
             if let indexPath = tableView.indexPathForSelectedRow {
-                let recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
+                let recruiter = dataStore.sections[indexPath.section][indexPath.row]
                 let recruiterDetailViewController = segue.destination as! RecruiterDetailViewController
                 recruiterDetailViewController.recruiter = recruiter
             }
         case "newRecruiterForm"?:
             let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController
-            newRecruiterFormViewController.recruiterStore = recruiterStore
+            newRecruiterFormViewController.dataStore = dataStore
         default:
             preconditionFailure("Unexpected segue identifier")
         }
@@ -78,7 +78,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
-        let recruiter = recruiterStore.sections[indexPath.section][indexPath.row];
+        let recruiter = dataStore.sections[indexPath.section][indexPath.row];
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
         let utility = RRMUtilities()
         if let dateLastContacted = recruiter.positions.last?.dateContacted {
@@ -91,28 +91,28 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionTitle = recruiterStore.sortedLastNameFirstLetters[section]
+        let sectionTitle = dataStore.sortedLastNameFirstLetters[section]
         return sectionTitle
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        let sectionTitles = recruiterStore.sortedLastNameFirstLetters
+        let sectionTitles = dataStore.sortedLastNameFirstLetters
         return sectionTitles
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numSections = recruiterStore.sections.count
+        let numSections = dataStore.sections.count
         return numSections
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numRows = recruiterStore.sections[section].count
+        let numRows = dataStore.sections[section].count
         return numRows
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let recruiter = recruiterStore.sections[indexPath.section][indexPath.row]
+            let recruiter = dataStore.sections[indexPath.section][indexPath.row]
             
             let title = "Delete \(recruiter.firstName) \(recruiter.lastName)?"
             let message = "Are you sure?"
@@ -124,7 +124,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
             
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) {
                 action -> Void in
-                self.recruiterStore.deleteRecruiter(recruiter)
+                self.dataStore.deleteRecruiter(recruiter)
                 self.tableView.reloadData()
             }
             
@@ -145,11 +145,11 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        recruiterStore.filteredRecruiters = recruiterStore.recruiters.filter { recruiter -> Bool in
+        dataStore.filteredRecruiters = dataStore.recruiters.filter { recruiter -> Bool in
             return recruiter.lastName.lowercased().contains(searchText.lowercased()) ||
                    recruiter.firstName.lowercased().contains(searchText.lowercased())
         }
-        recruiterStore.update()
+        dataStore.update()
         tableView.reloadData()
     }
 }

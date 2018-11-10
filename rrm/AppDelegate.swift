@@ -16,17 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let recruiterStore = RecruiterStore()
+        let dataStore = DataStore()
         
         let tabBarController = window?.rootViewController as! UITabBarController
         
         let recruiterNavigationController = tabBarController.viewControllers?[0] as! UINavigationController
         let recruiterController = recruiterNavigationController.viewControllers[0] as! PositionTableViewController
-        recruiterController.dataStore = recruiterStore
+        recruiterController.dataStore = dataStore
         
         let positionNavigationController = tabBarController.viewControllers?[1] as! UINavigationController
         let positionTableViewController = positionNavigationController.viewControllers[0] as! RecruiterTableViewController
-        positionTableViewController.recruiterStore = recruiterStore
+        positionTableViewController.dataStore = dataStore
 
         return true
     }

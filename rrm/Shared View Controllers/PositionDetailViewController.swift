@@ -10,7 +10,7 @@ import UIKit
 
 class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var dataStore: RecruiterStore?
+    var dataStore: DataStore?
     var position: Position!
     var pickerOptions = [String]()
     
@@ -88,7 +88,7 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         case "PositionNewRecruiter"?:
             let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController
             newRecruiterFormViewController.position = position
-            newRecruiterFormViewController.recruiterStore = dataStore
+            newRecruiterFormViewController.dataStore = dataStore
         default:
             preconditionFailure("Unexpected segue identifier")
         }
