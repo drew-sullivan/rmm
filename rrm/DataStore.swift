@@ -15,8 +15,9 @@ class DataStore {
     var sortedLastNameFirstLetters: [String] = []
     
     var filteredRecruiters = [Recruiter]()
-    
     var positions = [Position]()
+    
+    var imageCache = NSCache<NSString, UIImage>()
     
     init() {
         for _ in 0..<25 {
@@ -31,14 +32,38 @@ class DataStore {
         determineSections()
     }
     
-    
-    
     @discardableResult func generateRecruiter() -> Recruiter {
         let generatedRecruiter = Recruiter(random: true)
         let updatedRecruiters = addNewRecruiterAlphabetically(recruiters: recruiters, newRecruiter: generatedRecruiter)
         recruiters = updatedRecruiters
         determineSections()
         return generatedRecruiter
+    }
+    
+    // MARK: - caching
+    func cacheImage(_ image: UIImage, forKey key: String) {
+        imageCache.setObject(image, forKey: key as NSString)
+    }
+    
+    func retrieveImageFromCache(by key: String) -> UIImage? {
+        return imageCache.object(forKey: key as NSString)
+    }
+    
+    func deleteImageFromCache(by key: String) {
+        imageCache.removeObject(forKey: key as NSString)
+    }
+
+    func fetchLogo(by companyName: String, completion: @escaping (UIImage) -> Void) {
+        if let image = self.retrieveImageFromCache(by: companyName) {
+            OperationQueue.main.addOperation {
+                completion(image)
+            }
+            return
+        }
+        ClearbitAPI.getCompanyLogoURL(from: companyName) { (image) in
+            self.cacheImage(image, forKey: companyName)
+            completion(image)
+        }
     }
     
     func addRecruiter(_ recruiter: Recruiter) {

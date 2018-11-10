@@ -50,7 +50,7 @@ class PositionTableViewController: UITableViewController {
         cell.appliedLabel.text = "\(utility.parseDateToString(date: position.dateContacted))"
         cell.recruiterLabel.text = "Recruiter: \(position.recruiter?.printableName ?? "None")"
         
-        ClearbitAPI.getCompanyLogoURL(from: position.company.name) { (image) in
+        dataStore.fetchLogo(by: position.company.name) { (image) in
             cell.update(with: image)
         }
     
