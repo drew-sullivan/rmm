@@ -16,6 +16,8 @@
 		3A944020218E6F2F00C62EBB /* PositionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */; };
 		3A944024218F400000C62EBB /* PositionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A944023218F400000C62EBB /* PositionTableViewController.swift */; };
 		3A944027218F4D9F00C62EBB /* PositionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A944026218F4D9F00C62EBB /* PositionStatus.swift */; };
+		3AB31FAE219739A30038307C /* ClearbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB31FAD219739A30038307C /* ClearbitAPI.swift */; };
+		3AB31FB02197409E0038307C /* PositionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB31FAF2197409E0038307C /* PositionTableViewCell.swift */; };
 		7C64C5AE218362B600F2DE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5AD218362B600F2DE39 /* AppDelegate.swift */; };
 		7C64C5B3218362B600F2DE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C64C5B1218362B600F2DE39 /* Main.storyboard */; };
 		7C64C5B6218362B600F2DE39 /* rrm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C64C5B4218362B600F2DE39 /* rrm.xcdatamodeld */; };
@@ -59,6 +61,8 @@
 		3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionDetailViewController.swift; sourceTree = "<group>"; };
 		3A944023218F400000C62EBB /* PositionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewController.swift; sourceTree = "<group>"; };
 		3A944026218F4D9F00C62EBB /* PositionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionStatus.swift; sourceTree = "<group>"; };
+		3AB31FAD219739A30038307C /* ClearbitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearbitAPI.swift; sourceTree = "<group>"; };
+		3AB31FAF2197409E0038307C /* PositionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTableViewCell.swift; sourceTree = "<group>"; };
 		7C64C5AA218362B600F2DE39 /* rrm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rrm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C64C5AD218362B600F2DE39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C64C5B2218362B600F2DE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				3A944023218F400000C62EBB /* PositionTableViewController.swift */,
+				3AB31FAF2197409E0038307C /* PositionTableViewCell.swift */,
 			);
 			path = PositionTab;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 				3A04CBB9218A907A00548CD6 /* Enums */,
 				3A23BCA42186A309002734ED /* Extensions */,
 				7C64C5AD218362B600F2DE39 /* AppDelegate.swift */,
+				3AB31FAD219739A30038307C /* ClearbitAPI.swift */,
 				7C64C5E02183637300F2DE39 /* RecruiterStore.swift */,
 				7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */,
 				7C64C5B1218362B600F2DE39 /* Main.storyboard */,
@@ -358,6 +364,7 @@
 				7C64C5E52183651F00F2DE39 /* Position.swift in Sources */,
 				3A94401E218DDBEB00C62EBB /* NewPositionViewController.swift in Sources */,
 				3A944020218E6F2F00C62EBB /* PositionDetailViewController.swift in Sources */,
+				3AB31FB02197409E0038307C /* PositionTableViewCell.swift in Sources */,
 				7C64C5EF2183A47000F2DE39 /* RecruiterCell.swift in Sources */,
 				3A04CBB8218A907000548CD6 /* NameRelationshipStatus.swift in Sources */,
 				3A944024218F400000C62EBB /* PositionTableViewController.swift in Sources */,
@@ -367,6 +374,7 @@
 				7C64C5B6218362B600F2DE39 /* rrm.xcdatamodeld in Sources */,
 				3A62DE1E219122B100F79A1E /* UIColor.swift in Sources */,
 				3A5453A921861D270033613F /* NewRecruiterFormViewController.swift in Sources */,
+				3AB31FAE219739A30038307C /* ClearbitAPI.swift in Sources */,
 				3A23BCA32186A2C4002734ED /* String.swift in Sources */,
 				7C64C5E32183639E00F2DE39 /* Recruiter.swift in Sources */,
 				3A5453AB218621CB0033613F /* Company.swift in Sources */,

@@ -19,6 +19,9 @@ class RecruiterStore {
     var positions = [Position]()
     
     init() {
+        ClearbitAPI.getCompanyLogoURL(from: "apple") { (Data) in
+            print(Data)
+        }
         for _ in 0..<5 {
             generateRecruiter()
         }
@@ -30,6 +33,8 @@ class RecruiterStore {
         positions.sort { $0.status > $1.status }
         determineSections()
     }
+    
+    
     
     @discardableResult func generateRecruiter() -> Recruiter {
         let generatedRecruiter = Recruiter(random: true)

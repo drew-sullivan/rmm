@@ -36,14 +36,24 @@ class PositionTableViewController: UITableViewController {
     // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PositionPositionCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PositionPositionCell", for: indexPath) as! PositionTableViewCell
         
         let position = dataStore.positions[indexPath.row]
         
-        cell.textLabel?.text = "\(position.title) @ \(position.company.name)"
-        cell.detailTextLabel?.text = "Status: \(position.status.rawValue)"
-        cell.backgroundColor = position.status.backgroundColor()
+        cell.statusView.backgroundColor = position.status.backgroundColor()
+        cell.titleLabel.text = "\(position.title)"
+        cell.companyNameLabel.text = "\(position.company.name)"
+        cell.locationLabel.text = "\(position.company.location)"
+        let utility = RRMUtilities()
+        cell.appliedLabel.text = "\(utility.parseDateToString(date: position.dateContacted))"
+        cell.recruiterLabel.text = "Recruiter: \(position.recruiter?.printableName ?? "None")"
         
+        if dataStore.positions.count > 0 {
+            ClearbitAPI.getCompanyLogoURL(from: position.company.name) { (image) in
+                cell.update(with: image)
+            }
+        }
+    
         return cell
     }
 
@@ -74,6 +84,8 @@ class PositionTableViewController: UITableViewController {
             present(alertController, animated: true)
         }
     }
+    
+    // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {

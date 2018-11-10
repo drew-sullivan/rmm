@@ -15,6 +15,10 @@ class Recruiter: NSObject {
     var phoneNumber: String
     var emailAddress: String
     var positions: [Position]
+    var printableName: String {
+        return "\(firstName) \(lastName)"
+    }
+    
     init(firstName: String, lastName: String, employer: String, phoneNumber: String, emailAddress: String, positions: [Position]) {
         self.firstName = firstName
         self.lastName = lastName
