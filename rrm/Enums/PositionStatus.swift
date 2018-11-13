@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum PositionStatus: String, CaseIterable {
+enum PositionStatus: String, CaseIterable, Codable {
     case inactive = "Inactive"
     case resumeSubmitted = "Resume Submitted"
     case phoneScreenScheduled = "Phone Screen Scheduled"

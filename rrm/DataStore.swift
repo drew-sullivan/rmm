@@ -20,21 +20,24 @@ class DataStore {
     var imageCache = NSCache<NSString, UIImage>()
     
     init() {
-//        for _ in 0..<25 {
-//            generateRecruiter()
-//        }
-//        for r in recruiters {
-//            for p in r.positions {
-//                p.recruiter = r
-//                positions.append(p)
-//            }
-//        }
+        for _ in 0..<25 {
+            generateRecruiter()
+        }
+        for r in recruiters {
+            for p in r.positions {
+                p.recruiter = r
+                positions.append(p)
+            }
+        }
         positions.sort { $0.status > $1.status }
         determineSections()
     }
     
     @discardableResult func generateRecruiter() -> Recruiter {
         let generatedRecruiter = Recruiter(random: true)
+        
+        print(generatedRecruiter.toDict())
+        
         let updatedRecruiters = addNewRecruiterAlphabetically(recruiters: recruiters, newRecruiter: generatedRecruiter)
         recruiters = updatedRecruiters
         determineSections()

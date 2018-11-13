@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Position: NSObject {
+class Position: NSObject, Codable {
     var status: PositionStatus
     var dateApplied: Date
     var company: Company

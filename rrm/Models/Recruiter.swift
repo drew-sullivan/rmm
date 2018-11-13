@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Recruiter: NSObject {
+class Recruiter: NSObject, Codable {
+    var id: UUID
     var firstName: String
     var lastName: String
     var employer: String
@@ -20,12 +21,33 @@ class Recruiter: NSObject {
     }
     
     init(firstName: String, lastName: String, employer: String, phoneNumber: String, emailAddress: String, positions: [Position]) {
+        self.id = UUID()
         self.firstName = firstName
         self.lastName = lastName
         self.employer = employer
         self.phoneNumber = phoneNumber
         self.emailAddress = emailAddress
         self.positions = positions
+    }
+    
+    @discardableResult func toDict() -> [String: Any] {
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.outputFormatting = .prettyPrinted
+        let jsonData = try! jsonEncoder.encode(self)
+        
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        
+        if let data = jsonString?.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+//        print(jsonString!)
+        return [:]
     }
     
     convenience init(random: Bool = false) {
