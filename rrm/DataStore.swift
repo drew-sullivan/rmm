@@ -21,7 +21,8 @@ class DataStore {
     
     init() {
         for _ in 0..<25 {
-            generateRecruiter()
+            let rec = generateRecruiter()
+            print(rec.toDict())
         }
         for r in recruiters {
             for p in r.positions {

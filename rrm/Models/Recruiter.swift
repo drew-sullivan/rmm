@@ -34,19 +34,15 @@ class Recruiter: NSObject, Codable {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .prettyPrinted
         let jsonData = try! jsonEncoder.encode(self)
+                
+        let json = try? JSONSerialization.jsonObject(with: jsonData, options: [])
         
-        let jsonString = String(data: jsonData, encoding: .utf8)
-        
-        if let data = jsonString?.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
+        if let object = json as? [String: Any] {
+            print(object)
+            return object
+        } else {
+            print("JSON is invalid")
         }
-        
-        
-//        print(jsonString!)
         return [:]
     }
     
