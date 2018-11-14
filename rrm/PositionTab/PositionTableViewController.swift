@@ -36,7 +36,7 @@ class PositionTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        dataStore.updatePositions()
+        dataStore.sortPositions()
         tableView.reloadData()
     }
     

@@ -21,8 +21,13 @@ class DataStore {
     var imageCache = NSCache<NSString, UIImage>()
     
     let rootRef = Database.database().reference()
+    let recruitersRef: DatabaseReference
+    let positionsRef: DatabaseReference
     
     init() {
+        recruitersRef = rootRef.child("recruiters")
+        positionsRef = rootRef.child("positions")
+        
         for _ in 0..<25 {
             generateRecruiter()
         }
@@ -37,6 +42,7 @@ class DataStore {
         determineSections()
     }
     
+    // MARK: - Sample data
     @discardableResult func generateRecruiter() -> Recruiter {
         let generatedRecruiter = Recruiter(random: true)
         
@@ -48,7 +54,7 @@ class DataStore {
         return generatedRecruiter
     }
     
-    // MARK: - caching
+    // MARK: - Caching
     func cacheImage(_ image: UIImage, forKey key: String) {
         imageCache.setObject(image, forKey: key as NSString)
     }
@@ -61,6 +67,7 @@ class DataStore {
         imageCache.removeObject(forKey: key as NSString)
     }
 
+    // MARK: - data fetching
     func fetchLogo(by companyName: String, completion: @escaping (UIImage) -> Void) {
         if let image = self.retrieveImageFromCache(by: companyName) {
             OperationQueue.main.addOperation {
@@ -74,6 +81,7 @@ class DataStore {
         }
     }
     
+    // MARK: - CRUD
     func addRecruiter(_ recruiter: Recruiter) {
         recruiters.append(recruiter)
         determineSections()
@@ -93,6 +101,9 @@ class DataStore {
             recruiters.remove(at: index)
         }
         determineSections()
+        
+        let singleRecRef = recruitersRef.child(recruiter.id.uuidString)
+        singleRecRef.setValue(recruiter.toDict())
     }
     
     func deletePosition(_ position: Position) {
@@ -106,15 +117,17 @@ class DataStore {
         }
     }
     
-    func updatePositions() {
+    // MARK: - Updating data for UI
+    func sortPositions() {
         positions.sort { $0.status > $1.status }
     }
     
-    func update() {
+    func updateDataForUI() {
         determineSections()
     }
     
-    fileprivate func determineSections() {
+    // MARK: - Helpers
+    private func determineSections() {
         let recruiterList: [Recruiter]
         if filteredRecruiters.count > 0 {
             recruiterList = filteredRecruiters
@@ -138,7 +151,7 @@ class DataStore {
         }
     }
     
-    func addNewRecruiterAlphabetically(recruiters: [Recruiter], newRecruiter: Recruiter) -> [Recruiter] {
+    private func addNewRecruiterAlphabetically(recruiters: [Recruiter], newRecruiter: Recruiter) -> [Recruiter] {
         var recruiterAdded = false
         var newList = [Recruiter]()
         guard recruiters.count > 0 else {
@@ -167,7 +180,7 @@ class DataStore {
         return newList
     }
     
-    fileprivate func getNameRelationshipStatus(oldPerson oldName: String, newPerson newName: String) -> NameRelationshipStatus {
+    private func getNameRelationshipStatus(oldPerson oldName: String, newPerson newName: String) -> NameRelationshipStatus {
         if oldName == newName {
             return NameRelationshipStatus.equal
         } else if oldName > newName {

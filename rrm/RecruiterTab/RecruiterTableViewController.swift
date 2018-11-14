@@ -45,7 +45,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        dataStore.update()
+        dataStore.updateDataForUI()
         tableView.reloadData()
     }
     
@@ -149,7 +149,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
             return recruiter.lastName.lowercased().contains(searchText.lowercased()) ||
                    recruiter.firstName.lowercased().contains(searchText.lowercased())
         }
-        dataStore.update()
+        dataStore.updateDataForUI()
         tableView.reloadData()
     }
 }
