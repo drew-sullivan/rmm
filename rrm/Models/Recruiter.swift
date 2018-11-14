@@ -38,7 +38,6 @@ class Recruiter: NSObject, Codable {
         let json = try? JSONSerialization.jsonObject(with: jsonData, options: [])
         
         if let object = json as? [String: Any] {
-            print(object)
             return object
         } else {
             print("JSON is invalid")

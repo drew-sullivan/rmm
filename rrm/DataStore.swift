@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class DataStore {
     
@@ -19,10 +20,11 @@ class DataStore {
     
     var imageCache = NSCache<NSString, UIImage>()
     
+    let rootRef = Database.database().reference()
+    
     init() {
         for _ in 0..<25 {
-            let rec = generateRecruiter()
-            print(rec.toDict())
+            generateRecruiter()
         }
         for r in recruiters {
             for p in r.positions {
@@ -30,6 +32,7 @@ class DataStore {
                 positions.append(p)
             }
         }
+        
         positions.sort { $0.status > $1.status }
         determineSections()
     }
@@ -74,6 +77,10 @@ class DataStore {
     func addRecruiter(_ recruiter: Recruiter) {
         recruiters.append(recruiter)
         determineSections()
+        
+        let recruitersRef = rootRef.child("recruiters")
+        let singleRecRef = recruitersRef.child(recruiter.id.uuidString)
+        singleRecRef.setValue(recruiter.toDict())
     }
     
     func addPosition(_ position: Position) {
