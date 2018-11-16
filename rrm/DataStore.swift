@@ -86,7 +86,6 @@ class DataStore {
         recruiters.append(recruiter)
         determineSections()
         
-        let recruitersRef = rootRef.child("recruiters")
         let singleRecRef = recruitersRef.child(recruiter.id.uuidString)
         singleRecRef.setValue(recruiter.toDict())
     }
@@ -94,6 +93,9 @@ class DataStore {
     func addPosition(_ position: Position) {
         positions.append(position)
         positions.sort { $0.status > $1.status }
+        
+        let singlePositionRef = positionsRef.child(position.id.uuidString)
+        singlePositionRef.setValue(position.toDict())
     }
     
     func deleteRecruiter(_ recruiter: Recruiter) {
@@ -102,8 +104,7 @@ class DataStore {
         }
         determineSections()
         
-        let singleRecRef = recruitersRef.child(recruiter.id.uuidString)
-        singleRecRef.setValue(recruiter.toDict())
+        recruitersRef.child(recruiter.id.uuidString).removeValue()
     }
     
     func deletePosition(_ position: Position) {
@@ -115,6 +116,8 @@ class DataStore {
         if let index = positions.index(of: position) {
             positions.remove(at: index)
         }
+        
+        positionsRef.child(position.id.uuidString).removeValue()
     }
     
     // MARK: - Updating data for UI

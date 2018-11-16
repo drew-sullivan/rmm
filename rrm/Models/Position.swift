@@ -9,6 +9,7 @@
 import Foundation
 
 class Position: NSObject, Codable {
+    var id: UUID
     var status: PositionStatus
     var dateApplied: Date
     var company: Company
@@ -17,11 +18,27 @@ class Position: NSObject, Codable {
     var recruiter: Recruiter?
     
     init(status: PositionStatus, dateApplied: Date, company: Company, title: String, salary: String) {
+        self.id = UUID()
         self.status = status
         self.dateApplied = dateApplied
         self.company = company
         self.title = title
         self.salary = salary
+    }
+    
+    @discardableResult func toDict() -> [String: Any] {
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.outputFormatting = .prettyPrinted
+        let jsonData = try! jsonEncoder.encode(self)
+        
+        let json = try? JSONSerialization.jsonObject(with: jsonData, options: [])
+        
+        if let object = json as? [String: Any] {
+            return object
+        } else {
+            print("JSON is invalid")
+        }
+        return [:]
     }
     
     convenience init(random: Bool = false) {
