@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 class Position: NSObject, Codable {
     var id: UUID
@@ -15,7 +16,7 @@ class Position: NSObject, Codable {
     var company: Company
     var title: String
     var salary: String
-    var recruiter: Recruiter?
+    var recruiterID: UUID?
     
     init(status: PositionStatus, dateApplied: Date, company: Company, title: String, salary: String) {
         self.id = UUID()

@@ -10,6 +10,7 @@ import UIKit
 
 class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    var dataStore: DataStore!
     var recruiter: Recruiter!
     
     @IBOutlet var positionTableView: UITableView!
@@ -73,6 +74,7 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
         recruiter.employer = employerTextField.text!.titlecased()
         recruiter.phoneNumber = phoneNumberTextField.text!
         recruiter.emailAddress = emailAddressTextField.text!
+        dataStore.updateRecruiter(recruiter)
     }
     
     // MARK: - Segue

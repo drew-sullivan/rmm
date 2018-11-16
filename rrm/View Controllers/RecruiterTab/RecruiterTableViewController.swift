@@ -58,6 +58,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
                 let recruiter = dataStore.sections[indexPath.section][indexPath.row]
                 let recruiterDetailViewController = segue.destination as! RecruiterDetailViewController
                 recruiterDetailViewController.recruiter = recruiter
+                recruiterDetailViewController.dataStore = dataStore
             }
         case "newRecruiterForm"?:
             let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 class Recruiter: NSObject, Codable {
     var id: UUID
@@ -16,6 +17,7 @@ class Recruiter: NSObject, Codable {
     var phoneNumber: String
     var emailAddress: String
     var positions: [Position]
+    
     var printableName: String {
         return "\(firstName) \(lastName)"
     }
@@ -43,6 +45,28 @@ class Recruiter: NSObject, Codable {
             print("JSON is invalid")
         }
         return [:]
+    }
+    
+    init?(snapshot: DataSnapshot) {
+        guard
+            let value = snapshot.value as? [String: AnyObject],
+            let id = value["id"] as? UUID,
+            let firstName = value["firstName"] as? String,
+            let lastName = value["lastName"] as? String,
+            let employer = value["employer"] as? String,
+            let phoneNumber = value["phoneNumber"] as? String,
+            let emailAddress = value["emailAddress"] as? String,
+            let positions = value["positions"] as? [Position] else {
+                return nil
+        }
+        
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.employer = employer
+        self.phoneNumber = phoneNumber
+        self.emailAddress = emailAddress
+        self.positions = positions
     }
     
     convenience init(random: Bool = false) {
