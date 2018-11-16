@@ -34,6 +34,11 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        dataStore.initializeRecruiterData { (isDone) in
+            print("recruiter data received")
+            self.tableView.reloadData()
+        }
         
         // Set up the Search Controller
         searchController.searchResultsUpdater = self
@@ -68,9 +73,9 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
         }
     }
     
-    // MARK: - Private Helpers
+    // MARK: - Helpers
     
-    func isFiltering() -> Bool {
+    private func isFiltering() -> Bool {
         let filteringStatus = searchController.isActive && !searchBarIsEmpty()
         return filteringStatus
     }

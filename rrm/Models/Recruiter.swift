@@ -16,7 +16,7 @@ class Recruiter: NSObject, Codable {
     var employer: String
     var phoneNumber: String
     var emailAddress: String
-    var positions: [Position]
+    var positions = [Position]()
     
     var printableName: String {
         return "\(firstName) \(lastName)"
@@ -47,28 +47,6 @@ class Recruiter: NSObject, Codable {
         return [:]
     }
     
-    init?(snapshot: DataSnapshot) {
-        guard
-            let value = snapshot.value as? [String: AnyObject],
-            let id = value["id"] as? UUID,
-            let firstName = value["firstName"] as? String,
-            let lastName = value["lastName"] as? String,
-            let employer = value["employer"] as? String,
-            let phoneNumber = value["phoneNumber"] as? String,
-            let emailAddress = value["emailAddress"] as? String,
-            let positions = value["positions"] as? [Position] else {
-                return nil
-        }
-        
-        self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        self.employer = employer
-        self.phoneNumber = phoneNumber
-        self.emailAddress = emailAddress
-        self.positions = positions
-    }
-    
     convenience init(random: Bool = false) {
         if random {
             let potentialFirstNames = ["Dan", "Autumn", "Willow", "James", "John", "Alicia"]
@@ -81,7 +59,7 @@ class Recruiter: NSObject, Codable {
             let randPhoneNumber = "(\(Int(arc4random_uniform(UInt32(899))) + 100))-\(Int(arc4random_uniform(UInt32(899))) + 100)-\(Int(arc4random_uniform(UInt32(10000))))"
             let randEmailAddress = "\(randFirstName).\(randLastName)@\(randEmployer.trimmingCharacters(in: .whitespaces)).com"
             
-            let numRandPositions = Int(arc4random_uniform(UInt32(3)))
+            let numRandPositions = Int(arc4random_uniform(UInt32(3))) + 1
             var randPositions = [Position]()
             for _ in 0..<numRandPositions {
                 randPositions.append(Position(random: true))

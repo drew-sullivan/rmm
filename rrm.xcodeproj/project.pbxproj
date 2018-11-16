@@ -157,9 +157,9 @@
 		3A944021218F3DC900C62EBB /* RecruiterTab */ = {
 			isa = PBXGroup;
 			children = (
+				7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */,
 				3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */,
 				7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */,
-				7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */,
 				7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */,
 			);
 			path = RecruiterTab;

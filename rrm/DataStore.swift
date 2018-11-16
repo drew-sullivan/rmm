@@ -29,18 +29,17 @@ class DataStore {
         positionsRef = rootRef.child("positions")
         
 //        for _ in 0..<25 {
-//            generateRecruiter()
+//            let gen = generateRecruiter()
+//            addRecruiter(gen)
 //        }
-        
-        for r in recruiters {
-            for p in r.positions {
-                p.recruiterID = r.id
-                positions.append(p)
-            }
+    }
+    
+    func initializeRecruiterData(completion: @escaping (Bool) -> Void) {
+        fetchRecruiterData { (fetchedRecruiters) in
+            self.recruiters = fetchedRecruiters
+            self.determineSections()
+            completion(true)
         }
-        
-        positions.sort { $0.status > $1.status }
-        determineSections()
     }
     
     // MARK: - Sample data
@@ -135,16 +134,34 @@ class DataStore {
     // MARK: - Fetch position data
     func fetchPositionData(completion: @escaping ([Position]) -> Void) {
         positionsRef.observe(.value, with: { snapshot in
-            print(snapshot)
             var fetchedPositions = [Position]()
 
             for child in snapshot.children {
                 if let childSnapshot = child as? DataSnapshot {
-                    let position = self.processSnapshot(childSnapshot: childSnapshot)
-                    fetchedPositions.append(position!)
+                    let position = self.processPositionSnapshot(childSnapshot: childSnapshot)
+                    if let p = position {
+                        fetchedPositions.append(p)
+                    }
                 }
             }
             completion(fetchedPositions)
+        })
+    }
+    
+    // MARK: - Fetch recruiter data
+    func fetchRecruiterData(completion: @escaping ([Recruiter]) -> Void) {
+        recruitersRef.observe(.value, with: { snapshot in
+            var fetchedRecruiters = [Recruiter]()
+            
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot {
+                    let recruiter = self.processRecruiterSnapshot(childSnapshot: childSnapshot)
+                    if let r = recruiter {
+                        fetchedRecruiters.append(r)
+                    }
+                }
+            }
+            completion(fetchedRecruiters)
         })
     }
     
@@ -158,12 +175,24 @@ class DataStore {
     }
     
     // MARK: - Helpers
-    private func processSnapshot(childSnapshot: DataSnapshot) -> Position? {
+    private func processPositionSnapshot(childSnapshot: DataSnapshot) -> Position? {
         guard let value = childSnapshot.value as? [String: Any] else { return nil }
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
             let p = try JSONDecoder().decode(Position.self, from: jsonData)
             return p
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    private func processRecruiterSnapshot(childSnapshot: DataSnapshot) -> Recruiter? {
+        guard let value = childSnapshot.value as? [String: Any] else { return nil }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
+            let r = try JSONDecoder().decode(Recruiter.self, from: jsonData)
+            return r
         } catch let error {
             print(error.localizedDescription)
         }
