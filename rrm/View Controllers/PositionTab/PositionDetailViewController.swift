@@ -45,12 +45,14 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         salaryTextField.text = utility.formatStringToCurrency(position.salary)
         dateCreatedLabel.text = utility.parseDateToString(date: position.dateApplied)
         
+        recruiterLabel.text = ""
         if let recruiterID = position.recruiterID {
-            // Query for Recruiter Data
-//            recruiterLabel.text = "\(recruiter.firstName) \(recruiter.lastName)"
-            newRecruiterButton.isEnabled = false
-        } else {
-            recruiterLabel.text = ""
+            let positionRecruiter = dataStore?.getPositionRecruiter(id: recruiterID)
+            if let positionRecruiter = positionRecruiter {
+                recruiterLabel.text = "\(positionRecruiter.printableName)"
+                position.recruiterID = positionRecruiter.id
+                newRecruiterButton.isEnabled = false
+            }
         }
     }
     

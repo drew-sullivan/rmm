@@ -89,6 +89,7 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate, UITa
             if let indexPath = positionTableView.indexPathForSelectedRow {
                 let position = recruiter.positions[indexPath.row]
                 positionDetailViewController.position = position
+                positionDetailViewController.dataStore = dataStore
             }
         default:
             preconditionFailure("Unexpected segue identifier")

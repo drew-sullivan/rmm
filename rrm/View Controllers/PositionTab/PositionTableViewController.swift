@@ -53,7 +53,6 @@ class PositionTableViewController: UITableViewController {
     }
     
     // MARK: - UITableView
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PositionPositionCell", for: indexPath) as! PositionTableViewCell
         
@@ -65,8 +64,12 @@ class PositionTableViewController: UITableViewController {
             let utility = RRMUtilities()
             cell.appliedLabel.text = "\(utility.parseDateToString(date: position.dateApplied))"
             
-            // Query for Recruiter info
-            //        cell.recruiterLabel.text = "Recruiter: \(position.recruiter?.printableName ?? "None")"
+            if let recruiterID = position.recruiterID {
+                let positionRecruiter = dataStore.getPositionRecruiter(id: recruiterID)
+                if let positionRecruiter = positionRecruiter {
+                    cell.recruiterLabel.text = "Recruiter: \(positionRecruiter.printableName)"
+                }
+            }
             
             dataStore.fetchLogo(by: position.company.name) { (image) in
                 cell.update(with: image)
@@ -108,7 +111,6 @@ class PositionTableViewController: UITableViewController {
     }
     
     // MARK: - Segue
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "PositionNewPosition"?:
