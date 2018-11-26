@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum NameRelationshipStatus {
+enum NameRelationshipStatus: String, Codable {
     case equal
     case olderNameIsGreater
     case newerNameIsGreater

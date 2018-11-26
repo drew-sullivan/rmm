@@ -45,11 +45,14 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         salaryTextField.text = utility.formatStringToCurrency(position.salary)
         dateCreatedLabel.text = utility.parseDateToString(date: position.dateApplied)
         
-        if let recruiter = position.recruiter {
-            recruiterLabel.text = "\(recruiter.firstName) \(recruiter.lastName)"
-            newRecruiterButton.isEnabled = false
-        } else {
-            recruiterLabel.text = ""
+        recruiterLabel.text = ""
+        if let recruiterID = position.recruiterID {
+            let positionRecruiter = dataStore?.getPositionRecruiter(id: recruiterID)
+            if let positionRecruiter = positionRecruiter {
+                recruiterLabel.text = "\(positionRecruiter.printableName)"
+                position.recruiterID = positionRecruiter.id
+                newRecruiterButton.isEnabled = false
+            }
         }
     }
     
@@ -65,6 +68,10 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         position.company.name = companyTextField.text!
         position.company.location = locationTextField.text!
         position.salary = utility.formatStringToCurrency(salaryTextField.text!)
+        
+        if let dataStore = dataStore {
+            dataStore.updatePosition(position: position)
+        }
     }
     
     // MARK: - UIPickerView

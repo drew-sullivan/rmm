@@ -7,25 +7,44 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
-class Recruiter: NSObject {
+class Recruiter: NSObject, Codable {
+    var id: UUID
     var firstName: String
     var lastName: String
     var employer: String
     var phoneNumber: String
     var emailAddress: String
-    var positions: [Position]
+    var positions = [Position]()
+    
     var printableName: String {
         return "\(firstName) \(lastName)"
     }
     
     init(firstName: String, lastName: String, employer: String, phoneNumber: String, emailAddress: String, positions: [Position]) {
+        self.id = UUID()
         self.firstName = firstName
         self.lastName = lastName
         self.employer = employer
         self.phoneNumber = phoneNumber
         self.emailAddress = emailAddress
         self.positions = positions
+    }
+    
+    @discardableResult func toDict() -> [String: Any] {
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.outputFormatting = .prettyPrinted
+        let jsonData = try! jsonEncoder.encode(self)
+                
+        let json = try? JSONSerialization.jsonObject(with: jsonData, options: [])
+        
+        if let object = json as? [String: Any] {
+            return object
+        } else {
+            print("JSON is invalid")
+        }
+        return [:]
     }
     
     convenience init(random: Bool = false) {
@@ -40,7 +59,7 @@ class Recruiter: NSObject {
             let randPhoneNumber = "(\(Int(arc4random_uniform(UInt32(899))) + 100))-\(Int(arc4random_uniform(UInt32(899))) + 100)-\(Int(arc4random_uniform(UInt32(10000))))"
             let randEmailAddress = "\(randFirstName).\(randLastName)@\(randEmployer.trimmingCharacters(in: .whitespaces)).com"
             
-            let numRandPositions = Int(arc4random_uniform(UInt32(3)))
+            let numRandPositions = Int(arc4random_uniform(UInt32(3))) + 1
             var randPositions = [Position]()
             for _ in 0..<numRandPositions {
                 randPositions.append(Position(random: true))

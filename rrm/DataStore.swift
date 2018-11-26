@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class DataStore {
     
@@ -19,20 +20,29 @@ class DataStore {
     
     var imageCache = NSCache<NSString, UIImage>()
     
+    let rootRef = Database.database().reference()
+    let recruitersRef: DatabaseReference
+    let positionsRef: DatabaseReference
+    
     init() {
+        recruitersRef = rootRef.child("recruiters")
+        positionsRef = rootRef.child("positions")
+        
 //        for _ in 0..<25 {
-//            generateRecruiter()
+//            let gen = generateRecruiter()
+//            addRecruiter(gen)
 //        }
-//        for r in recruiters {
-//            for p in r.positions {
-//                p.recruiter = r
-//                positions.append(p)
-//            }
-//        }
-        positions.sort { $0.status > $1.status }
-        determineSections()
     }
     
+    func initializeRecruiterData(completion: @escaping (Bool) -> Void) {
+        fetchRecruiterData { (fetchedRecruiters) in
+            self.recruiters = fetchedRecruiters
+            self.determineSections()
+            completion(true)
+        }
+    }
+    
+    // MARK: - Sample data
     @discardableResult func generateRecruiter() -> Recruiter {
         let generatedRecruiter = Recruiter(random: true)
         let updatedRecruiters = addNewRecruiterAlphabetically(recruiters: recruiters, newRecruiter: generatedRecruiter)
@@ -41,7 +51,7 @@ class DataStore {
         return generatedRecruiter
     }
     
-    // MARK: - caching
+    // MARK: - Caching
     func cacheImage(_ image: UIImage, forKey key: String) {
         imageCache.setObject(image, forKey: key as NSString)
     }
@@ -54,6 +64,7 @@ class DataStore {
         imageCache.removeObject(forKey: key as NSString)
     }
 
+    // MARK: - data fetching
     func fetchLogo(by companyName: String, completion: @escaping (UIImage) -> Void) {
         if let image = self.retrieveImageFromCache(by: companyName) {
             OperationQueue.main.addOperation {
@@ -67,14 +78,23 @@ class DataStore {
         }
     }
     
+    func getPositionRecruiter(id: UUID) -> Recruiter? {
+        for recruiter in recruiters {
+            if recruiter.id == id {
+                return recruiter
+            }
+        }
+        return nil
+    }
+    
+    // MARK: - CRUD - Recruiter
     func addRecruiter(_ recruiter: Recruiter) {
         recruiters.append(recruiter)
         determineSections()
-    }
-    
-    func addPosition(_ position: Position) {
-        positions.append(position)
-        positions.sort { $0.status > $1.status }
+        
+        let singleRecRef = recruitersRef.child(recruiter.id.uuidString)
+        let fbRec = recruiter.toDict()
+        singleRecRef.setValue(fbRec)
     }
     
     func deleteRecruiter(_ recruiter: Recruiter) {
@@ -82,28 +102,133 @@ class DataStore {
             recruiters.remove(at: index)
         }
         determineSections()
+        
+        recruitersRef.child(recruiter.id.uuidString).removeValue()
+    }
+    
+    func updateRecruiter(_ recruiter: Recruiter) {
+        let singleRecRef = recruitersRef.child(recruiter.id.uuidString)
+        singleRecRef.setValue(recruiter.toDict())
+    }
+    
+    // MARK: - CRUD - Position
+    func addPosition(_ position: Position) {
+        positions.append(position)
+        positions.sort { $0.status > $1.status }
+        
+        let singlePositionRef = positionsRef.child(position.id.uuidString)
+        singlePositionRef.setValue(position.toDict())
     }
     
     func deletePosition(_ position: Position) {
-        if let recruiter = position.recruiter {
-            if let index = recruiter.positions.index(of: position) {
-                recruiter.positions.remove(at: index)
+        for recruiter in recruiters {
+            if recruiter.positions.contains(position) {
+                let recRefPositions = recruitersRef.child("\(recruiter.id.uuidString)/positions")
+                recRefPositions.observe(.value, with: { snapshot in
+                    if let positionsToInvestigate = snapshot.value as? [String] {
+                        for i in 0..<positionsToInvestigate.count {
+                            if positionsToInvestigate[i] == position.id.uuidString {
+                                recRefPositions.child("\(i)").removeValue()
+                            }
+                        }
+                    }
+                })
+                
+                if let index = recruiter.positions.index(of: position) {
+                    recruiter.positions.remove(at: index)
+                }
             }
         }
         if let index = positions.index(of: position) {
             positions.remove(at: index)
         }
+        
+        positionsRef.child(position.id.uuidString).removeValue()
     }
     
-    func updatePositions() {
+    func updatePosition(position: Position) {
+        let singlePositionRef = positionsRef.child(position.id.uuidString)
+        singlePositionRef.setValue(position.toDict())
+    }
+    
+    // MARK: - Fetch position data
+    func fetchPositionData(completion: @escaping ([Position]) -> Void) {
+        positionsRef.observe(.value, with: { snapshot in
+            var fetchedPositions = [Position]()
+
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot {
+                    let position = self.processPositionSnapshot(childSnapshot: childSnapshot)
+                    if let p = position {
+                        fetchedPositions.append(p)
+                    }
+                }
+            }
+            completion(fetchedPositions)
+        })
+    }
+    
+    // MARK: - Fetch recruiter data
+    func fetchRecruiterData(completion: @escaping ([Recruiter]) -> Void) {
+        recruitersRef.observe(.value, with: { snapshot in
+            var fetchedRecruiters = [Recruiter]()
+            
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot {
+                    let recruiter = self.processRecruiterSnapshot(childSnapshot: childSnapshot)
+                    if var r = recruiter {
+                        self.addMissingRecruiterReferencesToPositions(recruiter: &r)
+                        fetchedRecruiters.append(r)
+                    }
+                }
+            }
+            completion(fetchedRecruiters)
+        })
+    }
+    
+    // MARK: - Updating data for UI
+    func sortPositions() {
         positions.sort { $0.status > $1.status }
     }
     
-    func update() {
+    func updateDataForUI() {
         determineSections()
     }
     
-    fileprivate func determineSections() {
+    // MARK: - Helpers
+    private func addMissingRecruiterReferencesToPositions(recruiter: inout Recruiter) {
+        for position in recruiter.positions {
+            if position.recruiterID == nil {
+                position.recruiterID = recruiter.id
+            }
+        }
+    }
+    
+    private func processPositionSnapshot(childSnapshot: DataSnapshot) -> Position? {
+        guard let value = childSnapshot.value as? [String: Any] else { return nil }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
+            let p = try JSONDecoder().decode(Position.self, from: jsonData)
+            return p
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    private func processRecruiterSnapshot(childSnapshot: DataSnapshot) -> Recruiter? {
+        guard let value = childSnapshot.value as? [String: Any] else { return nil }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
+            let r = try JSONDecoder().decode(Recruiter.self, from: jsonData)
+            return r
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
+    private func determineSections() {
         let recruiterList: [Recruiter]
         if filteredRecruiters.count > 0 {
             recruiterList = filteredRecruiters
@@ -127,7 +252,7 @@ class DataStore {
         }
     }
     
-    func addNewRecruiterAlphabetically(recruiters: [Recruiter], newRecruiter: Recruiter) -> [Recruiter] {
+    private func addNewRecruiterAlphabetically(recruiters: [Recruiter], newRecruiter: Recruiter) -> [Recruiter] {
         var recruiterAdded = false
         var newList = [Recruiter]()
         guard recruiters.count > 0 else {
@@ -156,7 +281,7 @@ class DataStore {
         return newList
     }
     
-    fileprivate func getNameRelationshipStatus(oldPerson oldName: String, newPerson newName: String) -> NameRelationshipStatus {
+    private func getNameRelationshipStatus(oldPerson oldName: String, newPerson newName: String) -> NameRelationshipStatus {
         if oldName == newName {
             return NameRelationshipStatus.equal
         } else if oldName > newName {

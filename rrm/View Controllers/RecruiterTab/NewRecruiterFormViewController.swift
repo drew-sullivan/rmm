@@ -42,7 +42,7 @@ class NewRecruiterFormViewController: UIViewController, UITextFieldDelegate {
                                   positions: [])
         if let position = position {
             recruiter.positions.append(position)
-            position.recruiter = recruiter
+            position.recruiterID = recruiter.id
         }
         dataStore.addRecruiter(recruiter)
         navigationController?.popViewController(animated: true)

@@ -136,13 +136,13 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		3A0791A321925B540018E871 /* Shared View Controllers */ = {
+		3A0791A321925B540018E871 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */,
-				3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */,
+				3A944025218F40BA00C62EBB /* PositionTab */,
+				3A944021218F3DC900C62EBB /* RecruiterTab */,
 			);
-			path = "Shared View Controllers";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		3A23BCA42186A309002734ED /* Extensions */ = {
@@ -157,10 +157,10 @@
 		3A944021218F3DC900C62EBB /* RecruiterTab */ = {
 			isa = PBXGroup;
 			children = (
-				3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */,
-				7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */,
-				7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */,
 				7C64C5DE2183630F00F2DE39 /* RecruiterTableViewController.swift */,
+				3A5453A821861D270033613F /* NewRecruiterFormViewController.swift */,
+				7C64C5EC218391BE00F2DE39 /* RecruiterDetailViewController.swift */,
+				7C64C5EE2183A47000F2DE39 /* RecruiterCell.swift */,
 			);
 			path = RecruiterTab;
 			sourceTree = "<group>";
@@ -179,9 +179,19 @@
 			isa = PBXGroup;
 			children = (
 				3A944023218F400000C62EBB /* PositionTableViewController.swift */,
+				3A94401D218DDBEB00C62EBB /* NewPositionViewController.swift */,
+				3A94401F218E6F2F00C62EBB /* PositionDetailViewController.swift */,
 				3AB31FAF2197409E0038307C /* PositionTableViewCell.swift */,
 			);
 			path = PositionTab;
+			sourceTree = "<group>";
+		};
+		3AF83BF8219E525A00A6B7E3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				3AB31FAD219739A30038307C /* ClearbitAPI.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		3ED8E16E2A8FF733B2ECCE93 /* Frameworks */ = {
@@ -219,14 +229,12 @@
 		7C64C5AC218362B600F2DE39 /* rrm */ = {
 			isa = PBXGroup;
 			children = (
-				3A0791A321925B540018E871 /* Shared View Controllers */,
-				3A944025218F40BA00C62EBB /* PositionTab */,
-				3A944021218F3DC900C62EBB /* RecruiterTab */,
+				3AF83BF8219E525A00A6B7E3 /* Networking */,
+				3A0791A321925B540018E871 /* View Controllers */,
 				3A944022218F3E0F00C62EBB /* Models */,
 				3A04CBB9218A907A00548CD6 /* Enums */,
 				3A23BCA42186A309002734ED /* Extensions */,
 				7C64C5AD218362B600F2DE39 /* AppDelegate.swift */,
-				3AB31FAD219739A30038307C /* ClearbitAPI.swift */,
 				7C64C5E02183637300F2DE39 /* DataStore.swift */,
 				7C64C5E8218381F300F2DE39 /* RRMUtilities.swift */,
 				7C64C5B1218362B600F2DE39 /* Main.storyboard */,
@@ -412,6 +420,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-rrm/Pods-rrm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -419,6 +428,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

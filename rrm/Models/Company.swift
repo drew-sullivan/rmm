@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Company {
+class Company: Codable {
     var name: String
     var location: String
     

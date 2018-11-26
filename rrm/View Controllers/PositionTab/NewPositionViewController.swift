@@ -37,7 +37,7 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPicker
                                 title: titleTextField.text!,
                                 salary: salaryTextField.text!)
         if let recruiter = recruiter {
-            position.recruiter = recruiter
+            position.recruiterID = recruiter.id
             recruiter.addPosition(position: position)
         } else {
             dataStore?.addPosition(position)

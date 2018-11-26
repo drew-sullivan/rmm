@@ -34,6 +34,11 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        dataStore.initializeRecruiterData { (isDone) in
+            print("recruiter data received")
+            self.tableView.reloadData()
+        }
         
         // Set up the Search Controller
         searchController.searchResultsUpdater = self
@@ -45,7 +50,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        dataStore.update()
+        dataStore.updateDataForUI()
         tableView.reloadData()
     }
     
@@ -58,6 +63,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
                 let recruiter = dataStore.sections[indexPath.section][indexPath.row]
                 let recruiterDetailViewController = segue.destination as! RecruiterDetailViewController
                 recruiterDetailViewController.recruiter = recruiter
+                recruiterDetailViewController.dataStore = dataStore
             }
         case "newRecruiterForm"?:
             let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController
@@ -67,9 +73,9 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
         }
     }
     
-    // MARK: - Private Helpers
+    // MARK: - Helpers
     
-    func isFiltering() -> Bool {
+    private func isFiltering() -> Bool {
         let filteringStatus = searchController.isActive && !searchBarIsEmpty()
         return filteringStatus
     }
@@ -149,7 +155,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
             return recruiter.lastName.lowercased().contains(searchText.lowercased()) ||
                    recruiter.firstName.lowercased().contains(searchText.lowercased())
         }
-        dataStore.update()
+        dataStore.updateDataForUI()
         tableView.reloadData()
     }
 }

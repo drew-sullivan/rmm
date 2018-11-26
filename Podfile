@@ -7,6 +7,7 @@ target 'rrm' do
 
   # Pods for rrm
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'rrmTests' do
     inherit! :search_paths
