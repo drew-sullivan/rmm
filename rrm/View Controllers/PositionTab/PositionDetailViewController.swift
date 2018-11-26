@@ -20,8 +20,7 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     @IBOutlet var salaryTextField: UITextField!
     @IBOutlet var dateCreatedLabel: UILabel!
     @IBOutlet var statusPickerView: UIPickerView!
-    @IBOutlet var recruiterLabel: UILabel!
-    @IBOutlet var newRecruiterButton: UIButton!
+    @IBOutlet var modifyRecruiterButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,14 +44,14 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         salaryTextField.text = utility.formatStringToCurrency(position.salary)
         dateCreatedLabel.text = utility.parseDateToString(date: position.dateApplied)
         
-        recruiterLabel.text = ""
         if let recruiterID = position.recruiterID {
             let positionRecruiter = dataStore?.getPositionRecruiter(id: recruiterID)
-            if let positionRecruiter = positionRecruiter {
-                recruiterLabel.text = "\(positionRecruiter.printableName)"
-                position.recruiterID = positionRecruiter.id
-                newRecruiterButton.isEnabled = false
+            if let recruiter = positionRecruiter {
+                modifyRecruiterButton.setTitle("\(recruiter.printableName)", for: .normal)
+                position.recruiterID = recruiter.id
             }
+        } else {
+             modifyRecruiterButton.setTitle("Add Recruiter", for: .normal)
         }
     }
     

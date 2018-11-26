@@ -516,23 +516,14 @@
                                         <rect key="frame" x="0.0" y="152" width="359" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Recruiter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzc-zt-KD4">
-                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="297" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Crew McRecruiter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rn6-jj-OiC">
-                                                <rect key="frame" x="111.5" y="0.0" width="137.5" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T04-l9-qf5">
-                                                <rect key="frame" x="265" y="0.0" width="94" height="30"/>
-                                                <state key="normal" title="Add Recruiter"/>
-                                                <connections>
-                                                    <segue destination="i4H-qL-Nwe" kind="show" identifier="PositionNewRecruiter" id="dbA-xh-xIy"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcw-1b-7Cn">
+                                                <rect key="frame" x="313" y="0.0" width="46" height="30"/>
+                                                <state key="normal" title="Button"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -591,8 +582,7 @@
                         <outlet property="companyTextField" destination="5Ss-P2-fnf" id="x2J-Cd-96e"/>
                         <outlet property="dateCreatedLabel" destination="y9e-nJ-ecB" id="hfd-Pg-m6x"/>
                         <outlet property="locationTextField" destination="1KX-Ne-Mee" id="Q2X-EM-1p2"/>
-                        <outlet property="newRecruiterButton" destination="T04-l9-qf5" id="Z5R-1M-ACU"/>
-                        <outlet property="recruiterLabel" destination="rn6-jj-OiC" id="orK-gD-qDh"/>
+                        <outlet property="modifyRecruiterButton" destination="Vcw-1b-7Cn" id="d9Q-GC-huG"/>
                         <outlet property="salaryTextField" destination="fgY-7x-wLM" id="4aT-vv-8TG"/>
                         <outlet property="statusPickerView" destination="wNo-FL-zxL" id="ojc-Rh-trC"/>
                         <outlet property="titleTextField" destination="Svq-Kl-cNH" id="lbu-Uh-nEa"/>
@@ -766,7 +756,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ULA-kE-uhb">
-                                <rect key="frame" x="8" y="124" width="359" height="182"/>
+                                <rect key="frame" x="8" y="28" width="359" height="182"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B7l-Ro-N3b">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
@@ -952,7 +942,6 @@
         <image name="Position-Icon-BW" width="34.5" height="34.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dbA-xh-xIy"/>
         <segue reference="Ya5-8D-CUN"/>
         <segue reference="WjW-5d-Mux"/>
     </inferredMetricsTieBreakers>
