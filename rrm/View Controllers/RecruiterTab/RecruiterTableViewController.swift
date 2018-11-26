@@ -39,9 +39,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
         super.viewDidLoad()
         
         dataStore.initializeRecruiterData { (isDone) in
-            print("Recruiter Table View: data initialized")
             self.tableView.reloadData()
-            
         }
         
         // Set up the Search Controller
@@ -97,7 +95,7 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath) as! RecruiterCell
         let recruiter = dataStore.sections[indexPath.section][indexPath.row];
         
         if let positionRecruiterID = position.recruiterID {
