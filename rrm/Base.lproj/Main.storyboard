@@ -325,91 +325,27 @@
                                     <constraint firstItem="j0X-K1-Xf0" firstAttribute="leading" secondItem="Y8j-WG-DLt" secondAttribute="leading" id="ZXO-5e-PFr"/>
                                 </constraints>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JGK-KI-HFB">
-                                <rect key="frame" x="0.0" y="403" width="375" height="220"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="PositionCell" textLabel="VVZ-VM-Lgx" detailTextLabel="HCC-UA-4dV" style="IBUITableViewCellStyleSubtitle" id="t0E-62-LjO">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t0E-62-LjO" id="dbz-DO-Q5m">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VVZ-VM-Lgx">
-                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HCC-UA-4dV">
-                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="o6f-zE-LYd" kind="show" identifier="RecruiterPositionDetail" id="nAp-Aj-uix"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Positions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSC-kA-GxU">
-                                <rect key="frame" x="153" y="370.5" width="69.5" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="POF-BK-KbF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="lCY-Os-klM" firstAttribute="leading" secondItem="Nf9-zy-PQ4" secondAttribute="leading" constant="8" id="DMC-mB-pAh"/>
-                            <constraint firstItem="JGK-KI-HFB" firstAttribute="height" secondItem="Idc-u4-PRd" secondAttribute="height" multiplier="0.33" id="G4P-tI-eZs"/>
-                            <constraint firstItem="JGK-KI-HFB" firstAttribute="bottom" secondItem="Nf9-zy-PQ4" secondAttribute="bottom" id="GBf-Kg-x7O"/>
-                            <constraint firstItem="DSC-kA-GxU" firstAttribute="centerX" secondItem="Idc-u4-PRd" secondAttribute="centerX" id="GeZ-z5-Pzh"/>
-                            <constraint firstItem="JGK-KI-HFB" firstAttribute="top" secondItem="DSC-kA-GxU" secondAttribute="bottom" constant="12" id="JSh-V8-A4U"/>
                             <constraint firstItem="Nf9-zy-PQ4" firstAttribute="trailing" secondItem="lCY-Os-klM" secondAttribute="trailing" constant="8" id="Mek-pD-q8X"/>
-                            <constraint firstItem="JGK-KI-HFB" firstAttribute="width" secondItem="Idc-u4-PRd" secondAttribute="width" id="T6a-IR-TrZ"/>
-                            <constraint firstItem="JGK-KI-HFB" firstAttribute="leading" secondItem="Nf9-zy-PQ4" secondAttribute="leading" id="rXA-1Z-bkv"/>
                             <constraint firstItem="lCY-Os-klM" firstAttribute="top" secondItem="Nf9-zy-PQ4" secondAttribute="top" constant="8" id="sy2-dM-Vti"/>
                             <constraint firstItem="lCY-Os-klM" firstAttribute="height" secondItem="Idc-u4-PRd" secondAttribute="height" multiplier="0.25" id="tHD-IS-lAG"/>
-                            <constraint firstItem="JGK-KI-HFB" firstAttribute="trailing" secondItem="Nf9-zy-PQ4" secondAttribute="trailing" id="ya5-7U-eVb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nf9-zy-PQ4"/>
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="2i9-n6-c7l"/>
-                        <barButtonItem systemItem="add" id="pjm-3k-vUk">
-                            <connections>
-                                <action selector="addNewPosition:" destination="JS5-11-hvf" id="Ssb-Lx-YvS"/>
-                                <segue destination="uca-vv-eaO" kind="show" identifier="NewPosition" id="b5p-Of-TBl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="r6S-oR-Ior"/>
-                        <barButtonItem title="Edit" id="bFu-eX-Lnr">
-                            <connections>
-                                <action selector="toggleEditingMode:" destination="JS5-11-hvf" id="Q06-bN-w4s"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="IYU-Fc-Q8y"/>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="editButton" destination="bFu-eX-Lnr" id="rYj-Gl-lFq"/>
                         <outlet property="emailAddressTextField" destination="j0X-K1-Xf0" id="lG1-tH-EM9"/>
                         <outlet property="employerTextField" destination="Kf1-kG-h3P" id="hyc-G9-X59"/>
                         <outlet property="firstNameTextField" destination="lcv-dV-hMu" id="YPF-Ly-SBO"/>
                         <outlet property="lastNameTextField" destination="fRY-bR-1wL" id="Gt7-8b-Pwz"/>
                         <outlet property="phoneNumberTextField" destination="Y8j-WG-DLt" id="QWV-TO-IQI"/>
-                        <outlet property="positionTableView" destination="JGK-KI-HFB" id="WPx-04-Efk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7u-hV-sdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -419,7 +355,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1358" y="134"/>
+            <point key="canvasLocation" x="2994" y="-845"/>
         </scene>
         <!--Position Details-->
         <scene sceneID="aZi-3V-rUk">
@@ -748,7 +684,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1252" y="1003"/>
+            <point key="canvasLocation" x="569" y="207"/>
         </scene>
         <!--New Recruiter-->
         <scene sceneID="2yo-zT-keC">
@@ -915,7 +851,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="569" y="869"/>
+            <point key="canvasLocation" x="2993" y="-131"/>
         </scene>
         <!--Positions-->
         <scene sceneID="98X-ev-1iO">
@@ -944,8 +880,4 @@
     <resources>
         <image name="Position-Icon-BW" width="34.5" height="34.5"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Ya5-8D-CUN"/>
-        <segue reference="WjW-5d-Mux"/>
-    </inferredMetricsTieBreakers>
 </document>

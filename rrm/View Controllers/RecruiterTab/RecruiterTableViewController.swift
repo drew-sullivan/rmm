@@ -34,6 +34,11 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        dataStore.initializeRecruiterData { (isDone) in
+            print("Recruiter Table View: data initialized")
+            self.tableView.reloadData()
+        }
         
         // Set up the Search Controller
         searchController.searchResultsUpdater = self
@@ -81,12 +86,6 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
         let recruiter = dataStore.sections[indexPath.section][indexPath.row];
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
-        let utility = RRMUtilities()
-        if let dateLastContacted = recruiter.positions.last?.dateApplied {
-            cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: dateLastContacted))"
-        } else {
-            cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: Date()))"
-        }
         
         return cell
     }

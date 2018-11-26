@@ -39,7 +39,7 @@ class PositionTableViewController: UITableViewController {
     
     private func initializeData() {
         dataStore.initializeRecruiterData { (recruiterDataInitialized) in
-            print("Recruiter data initialized")
+            print("Position Table View: recruiter data initialized")
             
             self.dataStore.fetchPositionData { (fetchedPositions) in
                 self.positions = fetchedPositions

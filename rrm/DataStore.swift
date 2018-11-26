@@ -121,24 +121,6 @@ class DataStore {
     }
     
     func deletePosition(_ position: Position) {
-        for recruiter in recruiters {
-            if recruiter.positions.contains(position) {
-                let recRefPositions = recruitersRef.child("\(recruiter.id.uuidString)/positions")
-                recRefPositions.observe(.value, with: { snapshot in
-                    if let positionsToInvestigate = snapshot.value as? [String] {
-                        for i in 0..<positionsToInvestigate.count {
-                            if positionsToInvestigate[i] == position.id.uuidString {
-                                recRefPositions.child("\(i)").removeValue()
-                            }
-                        }
-                    }
-                })
-                
-                if let index = recruiter.positions.index(of: position) {
-                    recruiter.positions.remove(at: index)
-                }
-            }
-        }
         if let index = positions.index(of: position) {
             positions.remove(at: index)
         }
@@ -177,7 +159,6 @@ class DataStore {
                 if let childSnapshot = child as? DataSnapshot {
                     let recruiter = self.processRecruiterSnapshot(childSnapshot: childSnapshot)
                     if var r = recruiter {
-                        self.addMissingRecruiterReferencesToPositions(recruiter: &r)
                         fetchedRecruiters.append(r)
                     }
                 }
@@ -196,13 +177,6 @@ class DataStore {
     }
     
     // MARK: - Helpers
-    private func addMissingRecruiterReferencesToPositions(recruiter: inout Recruiter) {
-        for position in recruiter.positions {
-            if position.recruiterID == nil {
-                position.recruiterID = recruiter.id
-            }
-        }
-    }
     
     private func processPositionSnapshot(childSnapshot: DataSnapshot) -> Position? {
         guard let value = childSnapshot.value as? [String: Any] else { return nil }
@@ -220,10 +194,11 @@ class DataStore {
         guard let value = childSnapshot.value as? [String: Any] else { return nil }
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
+            print(jsonData)
             let r = try JSONDecoder().decode(Recruiter.self, from: jsonData)
             return r
         } catch let error {
-            print(error.localizedDescription)
+            print("processRecruiterSnapshot(): \(error.localizedDescription)")
         }
         return nil
     }

@@ -36,12 +36,8 @@ class NewPositionViewController: UIViewController, UITextFieldDelegate, UIPicker
                                 company: company,
                                 title: titleTextField.text!,
                                 salary: salaryTextField.text!)
-        if let recruiter = recruiter {
-            position.recruiterID = recruiter.id
-            recruiter.addPosition(position: position)
-        } else {
-            dataStore?.addPosition(position)
-        }
+        
+        dataStore?.addPosition(position)
         navigationController?.popViewController(animated: true)
     }
     
