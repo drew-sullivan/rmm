@@ -204,7 +204,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TO2-bK-BdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="135"/>
+            <point key="canvasLocation" x="2127" y="-582"/>
         </scene>
         <!--Recruiter Detail View Controller-->
         <scene sceneID="Lkf-wu-iTO">
@@ -215,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="top" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lCY-Os-klM">
-                                <rect key="frame" x="8" y="28" width="359" height="167"/>
+                                <rect key="frame" x="8" y="124" width="359" height="167"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bo4-fy-OUg">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="27"/>
@@ -524,6 +524,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vcw-1b-7Cn">
                                                 <rect key="frame" x="313" y="0.0" width="46" height="30"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <segue destination="usL-0U-IxV" kind="show" identifier="ModifyRecruiterSegue" id="dQZ-aa-wIf"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -756,7 +759,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ULA-kE-uhb">
-                                <rect key="frame" x="8" y="28" width="359" height="182"/>
+                                <rect key="frame" x="8" y="124" width="359" height="182"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B7l-Ro-N3b">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>

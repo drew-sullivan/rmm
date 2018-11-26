@@ -91,10 +91,9 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "PositionNewRecruiter"?:
-            let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController
-            newRecruiterFormViewController.position = position
-            newRecruiterFormViewController.dataStore = dataStore
+        case "ModifyRecruiterSegue"?:
+            let recruiterTableView = segue.destination as! RecruiterTableViewController
+            recruiterTableView.dataStore = dataStore
         default:
             preconditionFailure("Unexpected segue identifier")
         }

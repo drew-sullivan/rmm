@@ -34,11 +34,6 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        dataStore.initializeRecruiterData { (isDone) in
-            print("recruiter data received")
-            self.tableView.reloadData()
-        }
         
         // Set up the Search Controller
         searchController.searchResultsUpdater = self
