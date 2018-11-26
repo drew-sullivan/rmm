@@ -29,8 +29,6 @@ class PositionTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.rowHeight = 150
-        
-        initializeData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,14 +38,18 @@ class PositionTableViewController: UITableViewController {
     }
     
     private func initializeData() {
-        dataStore.fetchPositionData { (fetchedPositions) in
-        self.positions = fetchedPositions
-        self.positions?.sort { $0.status > $1.status }
-    
-        self.tableView.reloadData()
-    
-        if let count = self.positions?.count, count < 1 {
-            self.editButton.isEnabled = false
+        dataStore.initializeRecruiterData { (recruiterDataInitialized) in
+            print("Recruiter data initialized")
+            
+            self.dataStore.fetchPositionData { (fetchedPositions) in
+                self.positions = fetchedPositions
+                self.positions?.sort { $0.status > $1.status }
+                
+                self.tableView.reloadData()
+                
+                if let count = self.positions?.count, count < 1 {
+                    self.editButton.isEnabled = false
+                }
             }
         }
     }
