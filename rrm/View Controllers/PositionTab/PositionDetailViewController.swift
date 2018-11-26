@@ -20,8 +20,7 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     @IBOutlet var salaryTextField: UITextField!
     @IBOutlet var dateCreatedLabel: UILabel!
     @IBOutlet var statusPickerView: UIPickerView!
-    @IBOutlet var recruiterLabel: UILabel!
-    @IBOutlet var newRecruiterButton: UIButton!
+    @IBOutlet var modifyRecruiterButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +30,10 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setToolbarHidden(true, animated: true)
+        
         let utility = RRMUtilities()
         for status in PositionStatus.allCases {
             pickerOptions.append(status.rawValue)
@@ -45,14 +48,14 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         salaryTextField.text = utility.formatStringToCurrency(position.salary)
         dateCreatedLabel.text = utility.parseDateToString(date: position.dateApplied)
         
-        recruiterLabel.text = ""
         if let recruiterID = position.recruiterID {
             let positionRecruiter = dataStore?.getPositionRecruiter(id: recruiterID)
-            if let positionRecruiter = positionRecruiter {
-                recruiterLabel.text = "\(positionRecruiter.printableName)"
-                position.recruiterID = positionRecruiter.id
-                newRecruiterButton.isEnabled = false
+            if let recruiter = positionRecruiter {
+                modifyRecruiterButton.setTitle("\(recruiter.printableName)", for: .normal)
+                position.recruiterID = recruiter.id
             }
+        } else {
+             modifyRecruiterButton.setTitle("Add Recruiter", for: .normal)
         }
     }
     
@@ -72,6 +75,8 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         if let dataStore = dataStore {
             dataStore.updatePosition(position: position)
         }
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
     }
     
     // MARK: - UIPickerView
@@ -92,10 +97,10 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "PositionNewRecruiter"?:
-            let newRecruiterFormViewController = segue.destination as! NewRecruiterFormViewController
-            newRecruiterFormViewController.position = position
-            newRecruiterFormViewController.dataStore = dataStore
+        case "ModifyRecruiterSegue"?:
+            let recruiterTableView = segue.destination as! RecruiterTableViewController
+            recruiterTableView.dataStore = dataStore
+            recruiterTableView.position = position
         default:
             preconditionFailure("Unexpected segue identifier")
         }

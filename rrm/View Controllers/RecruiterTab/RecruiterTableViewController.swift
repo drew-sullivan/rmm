@@ -11,7 +11,10 @@ import UIKit
 class RecruiterTableViewController: UITableViewController, UISearchResultsUpdating {
     
     var dataStore: DataStore!
+    var position: Position!
     let searchController = UISearchController(searchResultsController: nil)
+    
+    var selectedRecruiterIndexPath: IndexPath?
     
     // MARK: - Outlets
     
@@ -34,9 +37,8 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         dataStore.initializeRecruiterData { (isDone) in
-            print("recruiter data received")
             self.tableView.reloadData()
         }
         
@@ -52,6 +54,16 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
         super.viewWillAppear(animated)
         dataStore.updateDataForUI()
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let indexPath = selectedRecruiterIndexPath {
+            let recruiterID = dataStore.sections[indexPath.section][indexPath.row].id;
+            position.recruiterID = recruiterID
+            dataStore.updatePosition(position: position)
+        }
     }
     
     // MARK: - Segue
@@ -83,15 +95,17 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath) as! RecruiterCell
         let recruiter = dataStore.sections[indexPath.section][indexPath.row];
-        cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
-        let utility = RRMUtilities()
-        if let dateLastContacted = recruiter.positions.last?.dateApplied {
-            cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: dateLastContacted))"
-        } else {
-            cell.detailTextLabel?.text = "Date last contacted: \(utility.parseDateToString(date: Date()))"
+        
+        if let positionRecruiterID = position.recruiterID {
+            if recruiter.id == positionRecruiterID {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
         }
+        cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
         
         return cell
     }
@@ -138,6 +152,16 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
             
             present(alertController, animated: true)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let sr = selectedRecruiterIndexPath {
+            tableView.cellForRow(at: sr)?.accessoryType = .none
+        }
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        selectedRecruiterIndexPath = indexPath
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - UISearchResultsUpdating
