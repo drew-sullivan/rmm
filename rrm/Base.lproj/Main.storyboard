@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uJz-1s-yUd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gan-2L-AGj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -215,7 +215,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="top" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lCY-Os-klM">
-                                <rect key="frame" x="8" y="124" width="359" height="167"/>
+                                <rect key="frame" x="8" y="28" width="359" height="167"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bo4-fy-OUg">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="27"/>
@@ -326,7 +326,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JGK-KI-HFB">
-                                <rect key="frame" x="0.0" y="354" width="375" height="220"/>
+                                <rect key="frame" x="0.0" y="403" width="375" height="220"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="PositionCell" textLabel="VVZ-VM-Lgx" detailTextLabel="HCC-UA-4dV" style="IBUITableViewCellStyleSubtitle" id="t0E-62-LjO">
@@ -359,7 +359,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Positions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSC-kA-GxU">
-                                <rect key="frame" x="153" y="321.5" width="69.5" height="20.5"/>
+                                <rect key="frame" x="153" y="370.5" width="69.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="POF-BK-KbF"/>
                                 </constraints>
@@ -924,29 +924,6 @@
             </objects>
             <point key="canvasLocation" x="569" y="869"/>
         </scene>
-        <!--Recruiters-->
-        <scene sceneID="sqA-E4-p1D">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="RIn-nj-5A5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recruiters" image="Recruiter-Icon-BW" id="5Qk-ka-Kp5"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ot4-Lw-5zq">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C9v-ux-v9f">
-                        <rect key="frame" x="0.0" y="574" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="usL-0U-IxV" kind="relationship" relationship="rootViewController" id="QD4-KE-g2h"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5C-Kp-SwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-172" y="135.38230884557723"/>
-        </scene>
         <!--Positions-->
         <scene sceneID="98X-ev-1iO">
             <objects>
@@ -959,7 +936,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LnT-Xt-UTa">
-                        <rect key="frame" x="0.0" y="574" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -970,29 +947,9 @@
             </objects>
             <point key="canvasLocation" x="-172" y="-582"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="Xew-0m-qfF">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uJz-1s-yUd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="82N-Vx-M8W">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="gan-2L-AGj" kind="relationship" relationship="viewControllers" id="6nH-2f-bYQ"/>
-                        <segue destination="RIn-nj-5A5" kind="relationship" relationship="viewControllers" id="kdQ-N1-o3Q"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NzC-c3-XK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1058" y="-244"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Position-Icon-BW" width="34.5" height="34.5"/>
-        <image name="Recruiter-Icon-BW" width="34.5" height="34.5"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dbA-xh-xIy"/>

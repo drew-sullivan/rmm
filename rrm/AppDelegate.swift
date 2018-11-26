@@ -20,15 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let dataStore = DataStore()
-        
-        let tabBarController = window?.rootViewController as! UITabBarController
-        
-        let recruiterNavigationController = tabBarController.viewControllers?[0] as! UINavigationController
-        let recruiterController = recruiterNavigationController.viewControllers[0] as! PositionTableViewController
-        recruiterController.dataStore = dataStore
-        
-        let positionNavigationController = tabBarController.viewControllers?[1] as! UINavigationController
-        let positionTableViewController = positionNavigationController.viewControllers[0] as! RecruiterTableViewController
+        let navController = window!.rootViewController as! UINavigationController
+        let positionTableViewController = navController.topViewController as! PositionTableViewController
         positionTableViewController.dataStore = dataStore
 
         return true
