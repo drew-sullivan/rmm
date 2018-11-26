@@ -37,6 +37,8 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,6 +52,8 @@ class RecruiterDetailViewController: UIViewController, UITextFieldDelegate {
         recruiter.phoneNumber = phoneNumberTextField.text!
         recruiter.emailAddress = emailAddressTextField.text!
         dataStore.updateRecruiter(recruiter)
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
     }
     
     // MARK: - UITextFieldDelegate

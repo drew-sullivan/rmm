@@ -30,6 +30,10 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setToolbarHidden(true, animated: true)
+        
         let utility = RRMUtilities()
         for status in PositionStatus.allCases {
             pickerOptions.append(status.rawValue)
@@ -71,6 +75,8 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         if let dataStore = dataStore {
             dataStore.updatePosition(position: position)
         }
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
     }
     
     // MARK: - UIPickerView
