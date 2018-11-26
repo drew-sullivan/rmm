@@ -158,7 +158,7 @@ class DataStore {
             for child in snapshot.children {
                 if let childSnapshot = child as? DataSnapshot {
                     let recruiter = self.processRecruiterSnapshot(childSnapshot: childSnapshot)
-                    if var r = recruiter {
+                    if let r = recruiter {
                         fetchedRecruiters.append(r)
                     }
                 }
@@ -194,7 +194,6 @@ class DataStore {
         guard let value = childSnapshot.value as? [String: Any] else { return nil }
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
-            print(jsonData)
             let r = try JSONDecoder().decode(Recruiter.self, from: jsonData)
             return r
         } catch let error {

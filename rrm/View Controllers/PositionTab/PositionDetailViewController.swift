@@ -100,6 +100,7 @@ class PositionDetailViewController: UIViewController, UITextFieldDelegate, UIPic
         case "ModifyRecruiterSegue"?:
             let recruiterTableView = segue.destination as! RecruiterTableViewController
             recruiterTableView.dataStore = dataStore
+            recruiterTableView.position = position
         default:
             preconditionFailure("Unexpected segue identifier")
         }

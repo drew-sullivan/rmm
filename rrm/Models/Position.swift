@@ -83,6 +83,4 @@ class Position: NSObject, Codable {
                       salary: "0")
         }
     }
-    
-    
 }
