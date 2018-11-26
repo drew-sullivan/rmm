@@ -19,7 +19,8 @@ class RRMUtilities: NSObject {
     
     func formatStringToCurrency(_ value: String?) -> String {
         guard value != nil else { return "$0.00" }
-        let doubleValue = Double(value!) ?? 0.0
+        let cleanedSalaryString = getCleanSalaryString(value!)
+        let doubleValue = Double(cleanedSalaryString) ?? 0.0
         let formatter = NumberFormatter()
         formatter.currencyCode = "USD"
         formatter.currencySymbol = "$"
@@ -27,5 +28,18 @@ class RRMUtilities: NSObject {
         formatter.maximumFractionDigits = 2
         formatter.numberStyle = .currencyAccounting
         return formatter.string(from: NSNumber(value: doubleValue)) ?? "$\(doubleValue)"
+    }
+    
+    private func getCleanSalaryString(_ salaryString: String) -> String {
+        var salaryStringCopy = salaryString
+        if salaryStringCopy.hasPrefix("$") {
+            salaryStringCopy.remove(at: salaryString.startIndex)
+        }
+        if salaryStringCopy.contains(",") {
+            if let index = salaryStringCopy.firstIndex(of: ",") {
+                salaryStringCopy.remove(at: index)
+            }
+        }
+        return salaryStringCopy
     }
 }
