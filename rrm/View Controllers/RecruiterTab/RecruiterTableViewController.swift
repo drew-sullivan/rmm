@@ -99,9 +99,12 @@ class RecruiterTableViewController: UITableViewController, UISearchResultsUpdati
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecruiterTableViewCell", for: indexPath)
         let recruiter = dataStore.sections[indexPath.section][indexPath.row];
+        
         if let positionRecruiterID = position.recruiterID {
             if recruiter.id == positionRecruiterID {
                 cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
             }
         }
         cell.textLabel?.text = "\(recruiter.lastName), \(recruiter.firstName)"
